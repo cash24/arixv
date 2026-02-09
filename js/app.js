@@ -137,3 +137,69 @@
     return n.endsWith('a') ? 'a' : 'o';
   }
 })();
+
+// === Destellos (sparkles) cada 3 segundos alrededor del marco ===
+(function sparklesAroundFrame(){
+  const container = document.querySelector('.scroll');
+  if (!container) return;
+
+  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function rand(min, max){ return Math.random() * (max - min) + min; }
+
+  function spawnSparkles() {
+    if (!motionOK) return;
+
+    // Genera de 4 a 8 chispas
+    const count = Math.floor(rand(4, 9));
+
+    for (let i = 0; i < count; i++) {
+      const sp = document.createElement('span');
+      sp.className = 'sparkle';
+
+      // Tamaño aleatorio
+      if (Math.random() < 0.33) sp.classList.add('big');
+      else if (Math.random() < 0.5) sp.classList.add('small');
+
+      // Posición: distribuimos a lo largo del borde exterior del contenedor
+      // Elegimos un lado aleatorio (top, right, bottom, left)
+      const side = Math.floor(rand(0, 4));
+      const offset = rand(4, 96); // % a lo largo del lado
+      const spread = rand(-10, 10); // ligera separación hacia afuera
+
+      // Coordenadas relativas
+      const rectPad = 6; // separarlo un poco del borde
+      sp.style.position = 'absolute';
+
+      switch (side) {
+        case 0: // top
+          sp.style.top = (-rectPad + spread) + 'px';
+          sp.style.left = `calc(${offset}% - 3px)`;
+          break;
+        case 1: // right
+          sp.style.top = `calc(${offset}% - 3px)`;
+          sp.style.right = (-rectPad + spread) + 'px';
+          break;
+        case 2: // bottom
+          sp.style.bottom = (-rectPad + spread) + 'px';
+          sp.style.left = `calc(${offset}% - 3px)`;
+          break;
+        case 3: // left
+          sp.style.top = `calc(${offset}% - 3px)`;
+          sp.style.left = (-rectPad + spread) + 'px';
+          break;
+      }
+
+      container.appendChild(sp);
+
+      // Limpieza al terminar la animación
+      sp.addEventListener('animationend', () => sp.remove());
+    }
+  }
+
+  // Primera tanda inmediata y luego cada 3 segundos
+  spawnSparkles();
+  setInterval(spawnSparkles, 3000);
+})();
+
+
