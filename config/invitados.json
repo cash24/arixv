@@ -1,0 +1,15 @@
+{
+  "evento": {
+    "quinceanera_nombre": "Isabella",
+    "frase": "Un cuento de hadas está por comenzar…",
+    "fecha_iso": "2026-04-25T18:00:00-06:00",
+    "lugar_nombre": "Salón Real de Tlalpan",
+    "maps_url": "https://maps.app.goo.gl/COLOCA_AQUI_TU_URL",
+    "whatsapp": "5215512345678"
+  },
+  "invitados": {
+    "INV001": { "nombre": "Familia Pérez", "mesa": 7,  "cupo": 4 },
+    "INV002": { "nombre": "María López",   "mesa": 12, "cupo": 2 },
+    "INV003": { "nombre": "Carlos Rivera",  "mesa": 5,  "cupo": 1 }
+  }
+}
