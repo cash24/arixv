@@ -217,3 +217,76 @@ h2{
   .filigrana{ display:none; }
   .bloque{ padding: 1rem .85rem; }
 }
+
+/* === Destello suave del marco cada 3s (solo CSS) === */
+.scroll {
+  position: relative; /* ya lo tienes, pero lo reitero */
+  isolation: isolate; /* asegura que el pseudo no desborde con z-index */
+}
+
+/* Pseudo-elemento para un halo animado */
+.scroll::after {
+  content: "";
+  position: absolute;
+  inset: -6px;               /* ligeramente más grande que el recuadro */
+  border-radius: 18px;       /* un poco más que el contenedor para suavizar */
+  pointer-events: none;
+  z-index: -1;
+  /* Estado base invisible */
+  opacity: 0;
+  box-shadow:
+    0 0 0 0 rgba(212, 175, 55, 0),           /* sin brillo al inicio */
+    0 0 0 0 rgba(123, 17, 35, 0);
+  border: 2px solid rgba(212, 175, 55, 0);   /* borde dorado invisible */
+  animation: destello-borde 3s ease-in-out infinite;
+}
+
+/* Animación del destello */
+@keyframes destello-borde {
+  0% {
+    opacity: 0;
+    border-color: rgba(212, 175, 55, 0);
+    box-shadow:
+      0 0 0 0 rgba(212, 175, 55, 0),
+      0 0 0 0 rgba(123, 17, 35, 0);
+    filter: blur(0);
+  }
+  10% {
+    opacity: 1;
+    border-color: rgba(212, 175, 55, .85);   /* dorado */
+    box-shadow:
+      0 0 14px 6px rgba(212, 175, 55, .45),  /* halo dorado */
+      0 0 26px 12px rgba(123, 17, 35, .25);  /* halo vino profundo */
+    filter: blur(.2px);
+  }
+  30% {
+    opacity: .9;
+    box-shadow:
+      0 0 22px 10px rgba(212, 175, 55, .35),
+      0 0 40px 16px rgba(123, 17, 35, .18);
+    filter: blur(.3px);
+  }
+  60% {
+    opacity: .4;
+    box-shadow:
+      0 0 10px 4px rgba(212, 175, 55, .22),
+      0 0 20px 8px rgba(123, 17, 35, .12);
+  }
+  100% {
+    opacity: 0;
+    border-color: rgba(212, 175, 55, 0);
+    box-shadow:
+      0 0 0 0 rgba(212, 175, 55, 0),
+      0 0 0 0 rgba(123, 17, 35, 0);
+    filter: blur(0);
+  }
+}
+
+/* Respeto a usuarios con preferencia de menos animación */
+@media (prefers-reduced-motion: reduce) {
+  .scroll::after {
+    animation: none;
+    opacity: 0; /* o deja un brillo fijo muy sutil si prefieres */
+  }
+}
+
