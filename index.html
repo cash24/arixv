@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>XV Años — Invitación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Invitación a los XV Años - temática medieval de princesas." />
+  <meta property="og:title" content="Invitación XV Años" />
+  <meta property="og:description" content="Acompáñanos en esta noche mágica." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/foto1.jpg" />
+
+  <!-- Google Fonts: medieval + elegante -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@400;500;700&family=MedievalSharp&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <main class="scroll">
+    <header class="header">
+      <img class="filigrana filigrana-top" src="assets/filigrana.svg" alt="" />
+      <h1 class="titulo">
+        <span class="pre">Los XV de</span>
+        <span id="quinceaneraNombre" class="nombre">Tu Hija</span>
+      </h1>
+      <p id="frase" class="frase">Un cuento de hadas está por comenzar…</p>
+      <img class="filigrana filigrana-bottom" src="assets/filigrana.svg" alt="" />
+    </header>
+
+    <section class="detalle">
+      <div class="bloque">
+        <h2><span class="capitel">B</span>ienvenid<span class="capitel">o/a</span></h2>
+        <p id="saludo">Querida familia y amigos: están cordialmente invitados a celebrar con nosotros.</p>
+
+        <div id="mesaInfo" class="mesa-info oculto">
+          <span class="badge">Mesa <strong id="mesaNum">—</strong></span>
+          <span class="cupo">Cupo: <strong id="cupoNum">—</strong> personas</span>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <h2>Cuando</h2>
+        <p id="fechaTexto">Sábado 25 de abril de 2026 · 6:00 pm</p>
+        <div class="contador" aria-label="Cuenta regresiva">
+          <div class="unit">
+            <div id="dias" class="num">—</div>
+            <div class="label">Días</div>
+          </div>
+          <div class="unit">
+            <div id="horas" class="num">—</div>
+            <div class="label">Horas</div>
+          </div>
+          <div class="unit">
+            <div id="min" class="num">—</div>
+            <div class="label">Min</div>
+          </div>
+          <div class="unit">
+            <div id="seg" class="num">—</div>
+            <div class="label">Seg</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <h2>Dónde</h2>
+        <p><strong id="lugarNombre">Salón Real</strong></p>
+        <a id="btnMapa" class="btn btn-mapa" href="#" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
+
+      <div class="bloque">
+        <h2>Confirma tu asistencia</h2>
+        <div class="rsvp">
+          <label for="asistentes">¿Cuántas personas asistirán?</label>
+          <input id="asistentes" type="number" min="1" value="1" />
+          <button id="btnWhatsapp" class="btn btn-wa" type="button">Confirmar por WhatsApp</button>
+          <small class="nota">Se prellenará un mensaje con tu nombre e ID de invitación.</small>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <h2>Galería</h2>
+        <div class="gallery">
+          <img src="assets/foto1.jpg" alt="Foto 1" loading="lazy" />
+          <img src="assets/foto2.jpg" alt="Foto 2" loading="lazy" />
+          <img src="assets/foto3.jpg" alt="Foto 3" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Dress code sugerido: <strong>elegante</strong> con toque medieval/princesa.</p>
+      <p class="tiny">Hecho con amor · GitHub Pages</p>
+    </footer>
+  </main>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
