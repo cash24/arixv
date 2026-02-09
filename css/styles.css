@@ -290,3 +290,41 @@ h2{
   }
 }
 
+
+
+/* === Sparkles (destellos puntuales) === */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 40%, #fff 0%, #fff6 45%, transparent 60%),
+    radial-gradient(circle at 60% 60%, #fff 0%, #fff0 55%, transparent 70%);
+  box-shadow:
+    0 0 8px 2px rgba(212,175,55,.85),
+    0 0 16px 6px rgba(123,17,35,.35);
+  opacity: 0;
+  transform: scale(.6);
+  will-change: transform, opacity;
+  animation: sparkle-pop .9s ease-out forwards;
+}
+
+/* Variantes pequeñas y grandes para más naturalidad */
+.sparkle.small { transform: scale(.45); filter: blur(.2px); }
+.sparkle.big   { transform: scale(.9);  }
+
+/* Brillo con aparición y desvanecimiento */
+@keyframes sparkle-pop {
+  0%   { opacity: 0; transform: scale(.2) rotate(0deg); }
+  10%  { opacity: 1; transform: scale(1) rotate(22deg); }
+  55%  { opacity: .85; transform: scale(.9) rotate(45deg); }
+  100% { opacity: 0; transform: scale(1.2) rotate(60deg); }
+}
+
+/* Reduce motion: deshabilitar partículas */
+@media (prefers-reduced-motion: reduce) {
+  .sparkle { animation: none; opacity: 0; }
+}
+
+
