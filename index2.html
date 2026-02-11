@@ -161,6 +161,14 @@
 
   </style>
 </head>
+  
+<footer class="dev-footer" id="devFooter" aria-label="Información de versión (desarrollo)" hidden>
+  <span class="chip">DEV</span>
+  <span>Versión <strong id="appVersion">–</strong></span>
+  <span>·</span>
+  <span>Última actualización: <time id="buildTime">–</time></span>
+</footer>
+
 <body>
 
   <!-- HERO + SOBRE -->
@@ -378,14 +386,49 @@
   <script>
     
     /* ===== Versionador de assets ===== */
-    const ASSETS_VERSION = '2026-02-11-01';  // <-- cambia este valor en cada release
+    const ASSETS_VERSION = '2026-02-11-02';  // <-- cambia este valor en cada release
     const v = (p) => `${p}${p.includes('?') ? '&' : '?'}v=${ASSETS_VERSION}`;
+
+    
+    /* ===== Bandera para mostrar/ocultar el footer de DEV ===== */
+    const SHOW_DEV_FOOTER = true;      
 
     // ===== Config de API (Google Apps Script) =====
     const RSVP_API  = 'https://script.google.com/macros/s/AKfycbx1a_S5LBTuIQoIkt6H9lGAyO_GP1gbtKGEkpwYnsoze6xrKb-HPHvnGIqKGjHfOhxeqw/exec';
     const API_TOKEN = 'xv_ariadna_2026_seguridad_9832';
     // Tel. WhatsApp (MX en formato internacional)
     const WA_PHONE = '525625408998';
+
+    
+    /* ===== Hero y audio con versión (cache busting) ===== */
+    const heroBg = document.querySelector('.hero__bg');
+    if (heroBg) heroBg.style.backgroundImage = `url('${v('assets/hero.jpg')}')`;
+    const audio = document.getElementById('bgm');
+    if (audio) audio.src = v('assets/music.mp3');
+  
+    /* ===== Footer de versión (se muestra sólo en DEV) ===== */
+    (function showDevFooter(){
+      try{
+        if (!SHOW_DEV_FOOTER) return;
+        const el = document.getElementById('devFooter');
+        const ver = document.getElementById('appVersion');
+        const time = document.getElementById('buildTime');
+  
+        if (!el || !ver || !time) return;
+  
+        // Fecha/hora legible (zona MX) — ajusta si prefieres otro formato
+        const fmt = new Intl.DateTimeFormat('es-MX', {
+          dateStyle:'medium', timeStyle:'short'
+        });
+        const now = fmt.format(new Date());
+  
+        ver.textContent = ASSETS_VERSION;
+        time.textContent = now;
+  
+        el.hidden = false;  // ¡mostrar!
+      }catch(e){/* noop */}
+    })();
+
 
     // ===== Helpers: fetch con timeout (evita cuelgues en móvil) =====
     async function fetchWithTimeout(url, ms = 8000, options = {}){
