@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +16,10 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
+    /* Ocultar barra de scroll (sin bloquear el desplazamiento) */
+    html.no-scrollbar { scrollbar-width: none; }
+    html.no-scrollbar::-webkit-scrollbar { width: 0; height: 0; }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -27,8 +30,10 @@
 
     /* ===== HERO ===== */
     .hero{
-      position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden;
-      padding:clamp(1rem,3vw,2rem);
+      position:relative;
+      min-height:100vh;           /* full-screen */
+      display:grid; place-items:center;
+      overflow:hidden; padding:0; /* sin padding para que el sobre gane altura */
       background:
         radial-gradient(60% 60% at 50% 0%, rgba(255,255,255,.9) 0 40%, rgba(255,255,255,0) 70%),
         linear-gradient(135deg, #fdf5ef 0%, #f8ece3 40%, #f4e5db 100%);
@@ -39,8 +44,12 @@
       opacity:.16; filter:grayscale(8%) saturate(105%); transform:scale(1.05);
     }
 
-    /* ===== SOBRE ===== */
-    .envelope{position:relative;z-index:1;width:min(640px,calc(100% - 2rem));aspect-ratio:3/2;perspective:1200px;will-change:transform}
+    /* ===== SOBRE (full-screen) ===== */
+    .envelope{
+      position:relative; z-index:1;
+      width:96vw; height:92vh; max-width:1400px; max-height:900px;
+      perspective:1200px; will-change:transform;
+    }
     .envelope__body{position:relative;width:100%;height:100%}
     .paper{position:absolute;inset:0;border-radius:12px;background:linear-gradient(180deg,#fff,#f6efe7);box-shadow:var(--shadow);outline:2px solid rgba(202,162,122,.15)}
     .flap{
@@ -49,7 +58,7 @@
       transition:transform 1s cubic-bezier(.2,.8,.2,1);
       background:linear-gradient(180deg,#f0e3d6 0%,#e7d4c0 55%,#e3c8af 100%);
       border-bottom:6px solid var(--vino);
-      /* Compatibilidad iOS: polygon en lugar de path() */
+      /* Compat iOS */
       clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 82% 86%, 50% 90%, 18% 86%, 0% 80%);
       box-shadow:0 10px 16px rgba(0,0,0,.08) inset;
       will-change:transform;
@@ -80,7 +89,7 @@
     .card__subtitle{color:#6a5b52;font-size:clamp(.95rem,2.4vw,1.1rem)}
     .card__guest{margin-top:.6rem;color:var(--vino-deep);font-weight:700}
 
-    /* Estado abierto */
+    /* Estados */
     .envelope.open .flap{transform:rotateX(-142deg);box-shadow:0 24px 24px rgba(0,0,0,.10)}
     .envelope.open .card{transform:translateY(-22%)}
 
@@ -172,7 +181,7 @@
             <p class="card__subtitle">Sábado 27 de junio, 2026 · 5:30 PM (Misa) · 7:00 PM (Recepción)</p>
             <p id="guestLine" class="card__guest">Invitado especial</p>
             <p style="margin-top:1rem">
-              <a href="#detalles" class="btn">Ver detalles →</a>
+              <a href="#detalles" class="btn-outline">Ver detalles →</a>
             </p>
           </div>
         </div>
@@ -191,7 +200,7 @@
         <p class="kv"><strong>Parroquia Santa María</strong></p>
         <p class="muted">5:30 PM · Av. Hidalgo 123, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" target="_blank" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
         </p>
       </div>
       <div class="card2">
@@ -199,7 +208,7 @@
         <p class="kv"><strong>Salón Arcadia</strong></p>
         <p class="muted">7:00 PM · Calz. del Bosque 456, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" target="_blank" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
         </p>
       </div>
     </div>
@@ -220,7 +229,7 @@
         <p class="lead" id="waText" style="margin:.6rem 0 1rem">
           Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).
         </p>
-        <p><a id="waBtn" class="btn" target="_blank" href="#">Confirmar por WhatsApp</a></p>
+        <p><a id="waBtn" class="btn" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp</a></p>
 
         <div style="margin-top:1rem" class="stat">
           <span>Confirmaciones registradas:</span> <b id="confirmCount">0</b>
@@ -246,13 +255,13 @@
     <p class="lead">Algunas imágenes para ir calentando motores.</p>
 
     <div class="gallery" id="gallery">
-      <!-- Deja estas 6 si ya tienes imágenes. Si no, bórralas: no rompen -->
-      <div class="thumb" data-src="assets/gallery/1.jpg"><img alt="" src="assets/gallery/1.jpg"></div>
-      <div class="thumb" data-src="assets/gallery/2.jpg"><img alt="" src="assets/gallery/2.jpg"></div>
-      <div class="thumb" data-src="assets/gallery/3.jpg"><img alt="" src="assets/gallery/3.jpg"></div>
-      <div class="thumb" data-src="assets/gallery/4.jpg"><img alt="" src="assets/gallery/4.jpg"></div>
-      <div class="thumb" data-src="assets/gallery/5.jpg"><img alt="" src="assets/gallery/5.jpg"></div>
-      <div class="thumb" data-src="assets/gallery/6.jpg"><img alt="" src="assets/gallery/6.jpg"></div>
+      <!-- Si no existen, no rompe; súbelas cuando gustes -->
+      <div class="thumb" data-src="assets/gallery/1.jpg"><img src="assets/gallery/1.jpg" alt="Foto 1" loading="lazy"></div>
+      <div class="thumb" data-src="assets/gallery/2.jpg"><img src="assets/gallery/2.jpg" alt="Foto 2" loading="lazy"></div>
+      <div class="thumb" data-src="assets/gallery/3.jpg"><img src="assets/gallery/3.jpg" alt="Foto 3" loading="lazy"></div>
+      <div class="thumb" data-src="assets/gallery/4.jpg"><img src="assets/gallery/4.jpg" alt="Foto 4" loading="lazy"></div>
+      <div class="thumb" data-src="assets/gallery/5.jpg"><img src="assets/gallery/5.jpg" alt="Foto 5" loading="lazy"></div>
+      <div class="thumb" data-src="assets/gallery/6.jpg"><img src="assets/gallery/6.jpg" alt="Foto 6" loading="lazy"></div>
     </div>
 
     <!-- Lightbox overlay -->
@@ -363,19 +372,22 @@
 })(window);
   </script>
 
-  <!-- ===== Lógica principal: versionador, DEV footer, móvil, Sheets, invitados ===== -->
+  <!-- ===== Lógica principal ===== -->
   <script>
     /* ===== Versionador de assets ===== */
-    const ASSETS_VERSION = '2026-02-11-05';  // ⬅️ súbelo en cada release
+    const ASSETS_VERSION = '2026-02-11-06';  // súbelo en cada release
     const v = (p) => `${p}${p.includes('?') ? '&' : '?'}v=${ASSETS_VERSION}`;
 
-    /* ===== Bandera para mostrar/ocultar el footer de DEV ===== */
-    const SHOW_DEV_FOOTER = true; // ⬅️ ponlo en false cuando salgas a prod
+    /* ===== Footer DEV ===== */
+    const SHOW_DEV_FOOTER = true; // ponlo en false al salir a prod
 
-    /* ===== Config de API (Google Apps Script) ===== */
+    /* ===== API/WA ===== */
     const RSVP_API  = 'https://script.google.com/macros/s/AKfycbx1a_S5LBTuIQoIkt6H9lGAyO_GP1gbtKGEkpwYnsoze6xrKb-HPHvnGIqKGjHfOhxeqw/exec';
     const API_TOKEN = 'xv_ariadna_2026_seguridad_9832';
     const WA_PHONE  = '525625408998';
+
+    /* ===== Ocultar barra de scroll (sin bloquear) ===== */
+    document.documentElement.classList.add('no-scrollbar');
 
     /* ===== Helper: fetch con timeout ===== */
     async function fetchWithTimeout(url, ms = 8000, options = {}){
@@ -387,7 +399,8 @@
       } finally { clearTimeout(t); }
     }
 
-    /* ===== Elementos que usaremos varias veces ===== */
+    /* ===== Referencias ===== */
+    const heroEl     = document.querySelector('.hero');
     const heroBg     = document.querySelector('.hero__bg');
     const env        = document.getElementById('envelope');
     const audio      = document.getElementById('bgm');
@@ -405,33 +418,56 @@
     const appVersion = document.getElementById('appVersion');
     const buildTime  = document.getElementById('buildTime');
 
-    /* ===== Pintar recursos con versión (hero + audio) ===== */
+    /* Pintar assets con versión */
     if (heroBg) heroBg.style.backgroundImage = `url('${v('assets/hero.jpg')}')`;
     if (audio)  audio.src = v('assets/music.mp3');
 
-    /* ===== Footer DEV: poblar cuando el DOM ya existe ===== */
+    /* Footer DEV cuando DOM listo */
     window.addEventListener('DOMContentLoaded', () => {
-      try{
-        if (!SHOW_DEV_FOOTER) return;
-        if (appVersion) appVersion.textContent = ASSETS_VERSION;
-        if (buildTime)  buildTime.textContent  = new Intl.DateTimeFormat('es-MX',{dateStyle:'medium',timeStyle:'short'}).format(new Date());
-        if (devFooter)  devFooter.hidden = false;
-      }catch{}
+      if (!SHOW_DEV_FOOTER) return;
+      if (appVersion) appVersion.textContent = ASSETS_VERSION;
+      if (buildTime)  buildTime.textContent  = new Intl.DateTimeFormat('es-MX',{dateStyle:'medium',timeStyle:'short'}).format(new Date());
+      if (devFooter)  devFooter.hidden = false;
     });
 
-    /* ===== Sobre: auto + por scroll ===== */
-    function openByScroll(){
-      const rect = env.getBoundingClientRect();
-      const vh = window.innerHeight || 0;
-      if (rect.bottom < vh * 0.72) {
-        env.classList.add('open');
-        window.removeEventListener('scroll', openByScroll);
-      }
+    /* ===== Abrir/cerrar sobre según dirección de scroll (en hero) ===== */
+    let inHero = true;   // hero visible
+    let lastY  = window.scrollY;
+    let touchStartY = null;
+
+    const io = new IntersectionObserver(([entry]) => {
+      inHero = entry.isIntersecting;
+    }, { root: null, threshold: 0.18 });
+    if (heroEl) io.observe(heroEl);
+
+    function handleDirection(newY){
+      const dy = newY - lastY;
+      lastY = newY;
+      if (!inHero) return;
+      if (Math.abs(dy) < 4) return;
+      if (dy > 0) env?.classList.add('open');    // bajando → abrir
+      else        env?.classList.remove('open'); // subiendo → cerrar
     }
-    window.addEventListener('scroll', openByScroll, { passive:true });
+    window.addEventListener('scroll', () => handleDirection(window.scrollY), { passive:true });
+
+    // Soporte gestos touch
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches?.[0]?.clientY ?? null;
+    }, { passive:true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (touchStartY == null) return;
+      const currentY = e.touches?.[0]?.clientY ?? touchStartY;
+      const dy = touchStartY - currentY;  // >0 bajando
+      if (Math.abs(dy) > 6 && inHero){
+        if (dy > 0) env?.classList.add('open');
+        else        env?.classList.remove('open');
+      }
+    }, { passive:true });
+
+    /* Auto‑open estable */
     window.addEventListener('load', () => {
-      setTimeout(()=>env.classList.add('open'), 1600); // más estable en móviles
-      openByScroll();
+      setTimeout(()=>env?.classList.add('open'), 1600);
     });
 
     /* ===== Countdown ===== */
@@ -442,8 +478,8 @@
       const now = Date.now();
       let diff = Math.max(0, EVENT_DATE - now);
       const days = Math.floor(diff / 86400000); diff -= days*86400000;
-      const hrs  = Math.floor(diff / 3600000); diff -= hrs*3600000;
-      const min  = Math.floor(diff / 60000);   diff -= min*60000;
+      const hrs  = Math.floor(diff / 3600000);  diff -= hrs*3600000;
+      const min  = Math.floor(diff / 60000);    diff -= min*60000;
       const sec  = Math.floor(diff / 1000);
       if (dEl) dEl.textContent = days;
       if (hEl) hEl.textContent = hrs;
@@ -452,7 +488,7 @@
     }
     tick(); setInterval(tick, 1000);
 
-    /* ===== Audio mobile‑safe (autoplay muted; desmute sólo por gesto) ===== */
+    /* ===== Audio mobile‑safe ===== */
     function hideAudioBar(){ if(bar) bar.style.display = 'none'; }
     function setUI(playing){
       if (!bar || !btn) return;
@@ -460,13 +496,8 @@
       else         { bar.classList.add('paused');  btn.textContent='Play';  }
     }
     window.addEventListener('load', async () => {
-      try{
-        if (audio) {
-          audio.muted = true;
-          await audio.play();  // permitido en móvil (muted)
-          setUI(false);
-        }
-      }catch{ setUI(false); }
+      try { if (audio){ audio.muted = true; await audio.play(); setUI(false); } }
+      catch { setUI(false); }
     }, { once:true });
     btn?.addEventListener('click', async () => {
       if (!audio) return;
@@ -477,7 +508,7 @@
     }, { passive:true });
     audio?.addEventListener('error', hideAudioBar, { once:true });
 
-    /* ===== Personalización por idInvitado + guests.json ===== */
+    /* ===== Personalización por idInvitado (guests.json) ===== */
     const params = new URLSearchParams(location.search);
     const idInv = params.get('idInvitado') || '';
     function buildWAText(guest){
@@ -527,7 +558,7 @@
     }
     loadGuests();
 
-    /* ===== API helper (Apps Script) – POST text/plain para evitar preflight ===== */
+    /* ===== Sheets (contador global) ===== */
     async function rsvpApi(body) {
       let res;
       try{
@@ -539,22 +570,18 @@
       }catch{ return { ok:false }; }
       try { return await res.json(); } catch { return { ok:false }; }
     }
-
-    /* ===== Contador global ===== */
     async function loadGlobalCount() {
       const r = await rsvpApi({ action: 'count' });
       if (r?.ok && typeof r.total === 'number' && countEl) countEl.textContent = r.total;
     }
     loadGlobalCount();
 
-    /* ===== RSVP ===== */
     function submitRSVP(e){
       e.preventDefault();
       const name   = (nameInput && nameInput.value) || '';
       const phone  = (document.querySelector('input[name="phone"]') || {}).value || '';
       const boletos= Number((guestsInput && guestsInput.value) || 0);
       const note   = (document.querySelector('input[name="note"]') || {}).value || '';
-
       rsvpApi({
         action: 'confirm',
         payload: { idInvitado: idInv || '', nombre: name, boletos, phone, note, source: 'github-pages' }
@@ -600,17 +627,17 @@
     function next(){ openLB((idx+1)%thumbs.length); }
 
     thumbs.forEach((t,i)=>{
-      // versionar thumbnails
       const img = t.querySelector('img');
       if (img && img.getAttribute('src')) img.setAttribute('src', v(img.getAttribute('src')));
-      if (t.dataset && t.dataset.src) t.dataset.src = v(t.dataset.src);
+      if (t.dataset && t.dataset.src)     t.dataset.src = v(t.dataset.src);
       t.addEventListener('click',()=>openLB(i), { passive:true });
     });
     lbClose?.addEventListener('click', closeLB, { passive:true });
     lbPrev?.addEventListener('click', prev, { passive:true });
     lbNext?.addEventListener('click', next, { passive:true });
     lb?.addEventListener('click', (e)=>{ if (e.target===lb) closeLB(); }, { passive:true });
-
+    window.addEventListener('keydown', (e)=>{ if (!lb.classList.contains('open')) return;
+      if (e.key==='Escape') closeLB(); if (e.key==='ArrowLeft') prev(); if (e.key==='ArrowRight') next(); });
   </script>
 </body>
 </html>
