@@ -16,9 +16,9 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    /* Ocultar barra de scroll (sin bloquear desplazamiento) */
+    /* Ocultar barra de scroll (sin bloquear el desplazamiento) */
     html.no-scrollbar { scrollbar-width: none; }
-    html.no-scrollbar::-webkit-scrollbar { width:0; height:0; }
+    html.no-scrollbar::-webkit-scrollbar { width: 0; height: 0; }
 
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
@@ -31,9 +31,9 @@
     /* ===== HERO ===== */
     .hero{
       position:relative;
-      min-height:100vh; /* full-screen */
+      min-height:100vh;           /* full-screen */
       display:grid; place-items:center;
-      overflow:hidden; padding:0;
+      overflow:hidden; padding:0; /* sin padding para que el sobre gane altura */
       background:
         radial-gradient(60% 60% at 50% 0%, rgba(255,255,255,.9) 0 40%, rgba(255,255,255,0) 70%),
         linear-gradient(135deg, #fdf5ef 0%, #f8ece3 40%, #f4e5db 100%);
@@ -126,9 +126,9 @@
 
     /* QR */
     .qr-box{display:grid;place-items:center;padding:1rem;background:#fff;border:1px solid rgba(202,162,122,.22);border-radius:12px;box-shadow:var(--shadow)}
-    .qr-name{margin-top:.5rem;color:var(--muted);font-size:.9rem}
+    .qr-name{margin-top:.5rem;color:#888;font-size:.9rem}
 
-    /* Galería – vacía (sin placeholders inválidos) */
+    /* Galería */
     .gallery{display:grid;gap:.6rem;grid-template-columns:repeat(2,1fr)}
     @media (min-width:768px){ .gallery{grid-template-columns:repeat(3,1fr)} }
     .thumb{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#f2e8de,#e9dbcf);cursor:pointer;border:1px solid rgba(202,162,122,.25)}
@@ -181,7 +181,7 @@
             <p class="card__subtitle">Sábado 27 de junio, 2026 · 5:30 PM (Misa) · 7:00 PM (Recepción)</p>
             <p id="guestLine" class="card__guest">Invitado especial</p>
             <p style="margin-top:1rem">
-              <a class="btn-outline" href="#detalles">Ver detalles →</a>
+              <a href="#detalles" class="btn-outline">Ver detalles →</a>
             </p>
           </div>
         </div>
@@ -200,7 +200,8 @@
         <p class="kv"><strong>Parroquia Santa María</strong></p>
         <p class="muted">5:30 PM · Av. Hidalgo 123, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" rel="noopener"
+             href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
         </p>
       </div>
       <div class="card2">
@@ -208,7 +209,8 @@
         <p class="kv"><strong>Salón Arcadia</strong></p>
         <p class="muted">7:00 PM · Calz. del Bosque 456, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" rel="noopener"
+             href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
         </p>
       </div>
     </div>
@@ -229,7 +231,7 @@
         <p class="lead" id="waText" style="margin:.6rem 0 1rem">
           Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).
         </p>
-        <p><a id="waBtn" class="btn" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp</a></p>
+        <p><a id="waBtn" class="btn" target="_blank" rel="noopener">Confirmar por WhatsApp</a></p>
 
         <div style="margin-top:1rem" class="stat">
           <span>Confirmaciones registradas:</span> <b id="confirmCount">0</b>
@@ -274,7 +276,7 @@
     </p>
   </section>
 
-  <!-- RSVP local (opcional) -->
+  <!-- RSVP -->
   <section class="section" id="rsvp">
     <h2>Confirma tu asistencia</h2>
     <p class="lead">También puedes enviarnos tu confirmación con este formulario.</p>
@@ -329,7 +331,7 @@
   </div>
   <audio id="bgm" preload="auto" loop></audio>
 
-  <!-- ===== DEV FOOTER (visible sólo en desarrollo) ===== -->
+  <!-- ===== DEV FOOTER ===== -->
   <footer class="dev-footer" id="devFooter" aria-label="Información de versión (desarrollo)" hidden>
     <span class="chip">DEV</span>
     <span>Versión <strong id="appVersion">–</strong></span>
@@ -367,10 +369,10 @@
   <!-- ===== Lógica principal ===== -->
   <script>
     /* ===== Versionador de assets ===== */
-    const ASSETS_VERSION = '2026-02-11-07';  // súbelo en cada release
+    const ASSETS_VERSION = '2026-02-11-08';  // súbelo en cada release
     const v = (p) => `${p}${p.includes('?') ? '&' : '?'}v=${ASSETS_VERSION}`;
 
-    /* ===== Footer DEV ===== */
+    /* ===== Mostrar/ocultar el footer de desarrollo ===== */
     const SHOW_DEV_FOOTER = true; // ponlo en false al salir a prod
 
     /* ===== API/WA ===== */
@@ -389,6 +391,28 @@
       finally{ clearTimeout(t); }
     }
 
+    /* ===== Footer DEV robusto ===== */
+    function renderDevFooter(){
+      if (!SHOW_DEV_FOOTER) return;
+      const el   = document.getElementById('devFooter');
+      const ver  = document.getElementById('appVersion');
+      const time = document.getElementById('buildTime');
+      if (!el || !ver || !time) return;
+      try{
+        ver.textContent  = ASSETS_VERSION || 'dev';
+        time.textContent = new Intl.DateTimeFormat('es-MX',{dateStyle:'medium',timeStyle:'short'})
+                             .format(new Date());
+        el.hidden = false;
+      }catch{
+        ver.textContent  = ASSETS_VERSION || 'dev';
+        time.textContent = 'ahora';
+        el.hidden = false;
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderDevFooter, { once:true });
+    } else { renderDevFooter(); }
+
     /* ===== Referencias ===== */
     const heroEl     = document.querySelector('.hero');
     const heroBg     = document.querySelector('.hero__bg');
@@ -404,9 +428,6 @@
     const qrDiv      = document.getElementById('qrcode');
     const qrLabel    = document.getElementById('qrLabel');
     const countEl    = document.getElementById('confirmCount');
-    const devFooter  = document.getElementById('devFooter');
-    const appVersion = document.getElementById('appVersion');
-    const buildTime  = document.getElementById('buildTime');
 
     /* ===== HERO IMG segura (solo si existe) ===== */
     (function setHeroImageSafely(){
@@ -416,14 +437,6 @@
       img.onerror = () => { /* sin imagen: se queda el degradado */ };
       img.src = url;
     })();
-
-    /* ===== Footer DEV cuando DOM listo ===== */
-    window.addEventListener('DOMContentLoaded', () => {
-      if (!SHOW_DEV_FOOTER) return;
-      if (appVersion) appVersion.textContent = ASSETS_VERSION;
-      if (buildTime)  buildTime.textContent  = new Intl.DateTimeFormat('es-MX',{dateStyle:'medium',timeStyle:'short'}).format(new Date());
-      if (devFooter)  devFooter.hidden = false;
-    });
 
     /* ===== Abrir/cerrar sobre según dirección de scroll (solo en hero) ===== */
     let inHero = true, lastY = window.scrollY, touchStartY = null;
@@ -465,7 +478,7 @@
     }
     tick(); setInterval(tick, 1000);
 
-    /* ===== Audio mobile‑safe (solo si existe el MP3) ===== */
+    /* ===== Audio mobile‑safe (solo si existe music.mp3) ===== */
     function hideAudioBar(){ if(bar) bar.style.display = 'none'; }
     function setUI(playing){ if (!bar || !btn) return; bar.classList.toggle('paused', !playing); btn.textContent = playing ? 'Pause' : 'Play'; }
 
@@ -570,7 +583,9 @@
     const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
     const lbPrev = document.getElementById('lbPrev'), lbNext = document.getElementById('lbNext'), lbClose = document.getElementById('lbClose');
     let idx = 0;
-    function openLB(i){ idx=i; const src=thumbs[idx]?.dataset?.src; if(!src)return; lbImg.src = v(src); lb.classList.add('open}
+    function openLB(i){ idx=i; const src=thumbs[idx]?.dataset?.src; if(!src)return; lbImg.src = v(src); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
+    function closeLB(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
+    function prev(){ openLB((idx-1+thumbs.length)%thumbs.length); }
     function next(){ openLB((idx+1)%thumbs.length); }
     thumbs.forEach((t,i)=>{ const img=t.querySelector('img'); if(img&&img.getAttribute('src')) img.setAttribute('src', v(img.getAttribute('src'))); if(t.dataset&&t.dataset.src) t.dataset.src = v(t.dataset.src); t.addEventListener('click',()=>openLB(i), { passive:true }); });
     lbClose?.addEventListener('click', closeLB, { passive:true });
