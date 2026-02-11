@@ -29,7 +29,7 @@
     }
     .hero__bg{
       position:absolute; inset:0; z-index:0;
-      background:url('assets/hero.jpg') center/cover no-repeat; /* opcional; si no existe, se ve el degradado */
+      background:url('assets/hero.jpg') center/cover no-repeat; /* opcional: si no existe, se ve el degradado del contenedor */
       opacity:.16; filter:grayscale(8%) saturate(105%); transform:scale(1.05);
     }
 
@@ -98,7 +98,6 @@
     .btn{display:inline-block;border:0;border-radius:12px;cursor:pointer;padding:.9rem 1.2rem;color:#fff;background:linear-gradient(135deg,var(--gold),var(--vino));box-shadow:var(--shadow);font-weight:700;letter-spacing:.02em;transition:filter .2s ease, transform .2s ease}
     .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
     .btn-outline{display:inline-block;border:2px solid var(--gold);border-radius:12px;padding:.7rem 1rem;color:var(--vino-deep);font-weight:700;background:#fff}
-
     .map{width:100%;height:320px;border:0;border-radius:12px;box-shadow:var(--shadow)}
 
     /* Audio bar */
@@ -123,9 +122,10 @@
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;z-index:9998}
     .lightbox.open{display:flex}
     .lightbox__img{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.5);background:#000}
-    .lb-controls{position:fixed;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
-    .lb-btn{pointer-events:auto;border:0;border-radius:999px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;width:44px;height:44px;margin:1rem;cursor:pointer;font-size:20px}
-    .lb-close{position:fixed;right:10px;top:10px}
+    .lb-btn{position:fixed;border:0;border-radius:999px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;width:44px;height:44px;cursor:pointer;font-size:20px}
+    #lbPrev{left:10px;top:50%;transform:translateY(-50%)}
+    #lbNext{right:10px;top:50%;transform:translateY(-50%)}
+    #lbClose{right:10px;top:10px}
 
     /* Contador */
     .stat{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid rgba(202,162,122,.22);border-radius:12px;padding:.7rem 1rem;box-shadow:var(--shadow);justify-content:center}
@@ -149,7 +149,9 @@
             <h1 class="card__title">Jimena Valeria</h1>
             <p class="card__subtitle">Sábado 27 de junio, 2026 · 5:30 PM (Misa) · 7:00 PM (Recepción)</p>
             <p id="guestLine" class="card__guest">Invitado especial</p>
-            <a class="btn-outline" href="#detalles" style="margin-top:1rem">Ver detalles →</a>
+            <p style="margin-top:1rem">
+              <a class="btn-outline" href="#detalles" aria-label="Ver detalles">Ver detalles →</a>
+            </p>
           </div>
         </div>
       </div>
@@ -167,7 +169,7 @@
         <p class="kv"><strong>Parroquia Santa María</strong></p>
         <p class="muted">5:30 PM · Av. Hidalgo 123, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" target="_blank" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
         </p>
       </div>
       <div class="card2">
@@ -175,7 +177,7 @@
         <p class="kv"><strong>Salón Arcadia</strong></p>
         <p class="muted">7:00 PM · Calz. del Bosque 456, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" target="_blank" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
         </p>
       </div>
     </div>
@@ -196,7 +198,7 @@
         <p class="lead" id="waText" style="margin:.6rem 0 1rem">
           Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).
         </p>
-        <a class="btn" id="waBtn" target="_blank" href="#">Confirmar por WhatsApp</a>
+        <p><a id="waBtn" class="btn" target="_blank" rel="noopener" href="#">Confirmar por WhatsApp</a></p>
 
         <div style="margin-top:1rem" class="stat">
           <span>Confirmaciones registradas:</span> <b id="confirmCount">0</b>
@@ -222,22 +224,21 @@
     <p class="lead">Algunas imágenes para ir calentando motores.</p>
 
     <div class="gallery" id="gallery">
-      <!-- Si aún no subes imágenes, los divs se ven con un degradado de respaldo -->
-      <div class="thumb" data-src="assets/gallery/1.jpg"><img loading="lazy" src="assets/gallery/1.jpg" alt="Foto 1" onerror="this.style.display='none'"></div>
-      <div class="thumb" data-src="assets/gallery/2.jpg"><img loading="lazy" src="assets/gallery/2.jpg" alt="Foto 2" onerror="this.style.display='none'"></div>
-      <div class="thumb" data-src="assets/gallery/3.jpg"><img loading="lazy" src="assets/gallery/3.jpg" alt="Foto 3" onerror="this.style.display='none'"></div>
-      <div class="thumb" data-src="assets/gallery/4.jpg"><img loading="lazy" src="assets/gallery/4.jpg" alt="Foto 4" onerror="this.style.display='none'"></div>
-      <div class="thumb" data-src="assets/gallery/5.jpg"><img loading="lazy" src="assets/gallery/5.jpg" alt="Foto 5" onerror="this.style.display='none'"></div>
-      <div class="thumb" data-src="assets/gallery/6.jpg"><img loading="lazy" src="assets/gallery/6.jpg" alt="Foto 6" onerror="this.style.display='none'"></div>
+      <!-- Thumbs (si no subes imágenes, estos <div> quedan con degradado de respaldo) -->
+      <div class="thumb" data-src="assets/gallery/1.jpg"><img src="assets/gallery/1.jpg" alt="Foto 1" onerror="this.style.display='none'"></div>
+      <div class="thumb" data-src="assets/gallery/2.jpg"><img src="assets/gallery/2.jpg" alt="Foto 2" onerror="this.style.display='none'"></div>
+      <div class="thumb" data-src="assets/gallery/3.jpg"><img src="assets/gallery/3.jpg" alt="Foto 3" onerror="this.style.display='none'"></div>
+      <div class="thumb" data-src="assets/gallery/4.jpg"><img src="assets/gallery/4.jpg" alt="Foto 4" onerror="this.style.display='none'"></div>
+      <div class="thumb" data-src="assets/gallery/5.jpg"><img src="assets/gallery/5.jpg" alt="Foto 5" onerror="this.style.display='none'"></div>
+      <div class="thumb" data-src="assets/gallery/6.jpg"><img src="assets/gallery/6.jpg" alt="Foto 6" onerror="this.style.display='none'"></div>
     </div>
 
     <!-- Lightbox overlay -->
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <img id="lbImg" class="lightbox__img" alt="Imagen ampliada">
-      <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
-      <button class="lb-btn lb-next" id="lbNext" aria-label="Siguiente">›</button>
-      <button class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">✕</button>
-      <div class="lb-controls"></div>
+      <button class="lb-btn" id="lbPrev" aria-label="Anterior">‹</button>
+      <button class="lb-btn" id="lbNext" aria-label="Siguiente">›</button>
+      <button class="lb-btn" id="lbClose" aria-label="Cerrar">✕</button>
     </div>
   </section>
 
@@ -255,7 +256,7 @@
     <h2>Confirma tu asistencia</h2>
     <p class="lead">También puedes enviarnos tu confirmación con este formulario.</p>
     <div class="card2">
-      <form id="form-rsvp" class="grid two" onsubmit="return submitRSVP(event)">
+      <form id="form-rsvp" class="grid two">
         <div>
           <label>Nombre completo<br/>
             <input name="name" id="nameInput" required style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
@@ -314,106 +315,3 @@
   function QR8bitByte(d){this.mode=4;this.data=d;} QR8bitByte.prototype={getLength:function(){return this.data.length},write:function(b){for(var i=0;i<this.data.length;i++)b.put(this.data.charCodeAt(i),8)}};
   var QRUtil={PATTERN_POSITION_TABLE:[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62]],G15:1335,G18:7973,G15_MASK:21522,getBCHDigit:function(d){var n=0;while(d!=0){n++;d>>>=1}return n},getBCHTypeInfo:function(d){var b=d<<10;while(QRUtil.getBCHDigit(b)-QRUtil.getBCHDigit(QRUtil.G15)>=0){b^=(QRUtil.G15<<(QRUtil.getBCHDigit(b)-QRUtil.getBCHDigit(QRUtil.G15)))}return((d<<10)|b)^QRUtil.G15_MASK},getMask:function(m,i,j){switch(m){case 0:return (i+j)%2==0;case 1:return i%2==0;case 2:return j%3==0;case 3:return (i+j)%3==0;case 4:return (Math.floor(i/2)+Math.floor(j/3))%2==0;case 5:return (i*j)%2+(i*j)%3==0;case 6:return ((i*j)%2+(i*j)%3)%2==0;case 7:return ((i+j)%2+(i*j)%3)%2==0;default:return false}},getPatternPosition:function(t){return QRUtil.PATTERN_POSITION_TABLE[t-1]||[]}};
   function QRMath(){} QRMath.glog=function(n){var L=[0,0,1,25,2,50,26,198,3,223,51,238,27,104,199,75,4,100,224,14,52,141,239,129,28,193,105,248,200,8,76,113,5,138,101,47,225,36,15,33,53,147,142,218,240,18,130,69,29,181,194,125,106,39,249,185,201,154,9,120,77,228,114,166,6,191,139,98,102,221,48,253,226,152,37,179,16,145,34,136,54,208,148,206,143,150,219,189,241,210,19,92,131,56,70,64,30,66,182,163,195,72,126,110,107,58,40,84,250,133,186,61,202,94,155,159,10,21,121,43,78,212,229,172,115,243,167,87,7,112,192,247,140,128,99,13,103,74,222,237,49,197,254,24,227,165,153,119,38,184,180,124,17,68,146,217,35,32,137,46,55,63,209,91,149,188,207,205,144,135,151,178,220,252,190,97,242,86,211,171,20,42,93,158,132,60,57,83,71,109,65,162,31,45,67,216,183,123,164,118,196,23,73,236,127,12,111,246,108,41,59,132,85,60,251,134,187,95,62,203,156,44,160,22,11,157,122,88,79,170,213,54,230,173,233,116,244,234,168,80];return L[n];};
-  QRMath.gexp=function(n){var E=[1,2,4,8,16,32,64,128,29,58,116,232,205,135,19,38,76,152,45,90,180,117,234,201,143,3,6,12,24,48,96,192,157,39,78,156,37,74,148,53,106,212,181,119,238,193,159,35,70,140,5,10,20,40,80,160,93,186,105,210,185,111,222,161,95,190,97,194,153,47,94,188,101,202,137,15,30,60,120,240,253,231,211,187,107,214,177,127,254,225,223,163,91,182,113,226,217,175,67,134,17,34,68,136,13,26,52,104,208,189,103,206];while(n<0)n+=255; while(n>=255)n-=255; return E[n];};
-  function QRBitBuffer(){this.buffer=[];this.length=0;} QRBitBuffer.prototype={get:function(i){return ((this.buffer[Math.floor(i/8)] >>> (7 - i % 8)) & 1)==1}, put:function(num, l){for(var i=0;i<l;i++) this.putBit(((num >>> (l - i - 1)) & 1)==1)}, putBit:function(bit){this.buffer[Math.floor(this.length/8)] |= (bit?1:0) << (7 - this.length % 8); this.length++}};
-  function QRRSBlock(t,d){this.totalCount=t;this.dataCount=d;} QRRSBlock.getRSBlocks=function(typeNumber){if(typeNumber<=5) return [new QRRSBlock(26,20), new QRRSBlock(26,20)]; return [new QRRSBlock(44,34), new QRRSBlock(44,34)];};
-  function QRCode(typeNumber){this.typeNumber=typeNumber;this.modules=null;this.moduleCount=0;this.dataList=[];}
-  QRCode.prototype={addData:function(data){this.dataList.push(new QR8bitByte(data))},
-  make:function(){var rs=QRRSBlock.getRSBlocks(this.typeNumber); var buf=new QRBitBuffer(); for(var i=0;i<this.dataList.length;i++){var d=this.dataList[i]; buf.put(4,4); buf.put(d.getLength(),8); d.write(buf);} buf.put(0,4); while(buf.length%8!=0) buf.putBit(false);
-    var total=0; for(i=0;i<rs.length;i++) total+=rs[i].dataCount; var bytes=[]; for(i=0;i<total;i++) bytes[i]=0; for(i=0;i<buf.length;i++) bytes[i>>3]|=((buf.buffer[i>>3]>>>(7-i%8))&1)<<(7-i%8);
-    this.moduleCount=(this.typeNumber-1)*4+21; this.modules=new Array(this.moduleCount); for(i=0;i<this.moduleCount;i++) this.modules[i]=new Array(this.moduleCount).fill(null);
-    function finder(qr,r,c){for(var y=-1;y<=7;y++)for(var x=-1;x<=7;x++){var rr=r+y,cc=c+x;if(rr<0||rr>=qr.moduleCount||cc<0||cc>=qr.moduleCount)continue;var v=((y>=0&&y<=6&&(x==0||x==6))||(x>=0&&x<=6&&(y==0||y==6))||(y>=2&&y<=4&&x>=2&&x<=4));qr.modules[rr][cc]=v}}
-    finder(this,0,0); finder(this,0,this.moduleCount-7); finder(this,this.moduleCount-7,0);
-    for(i=8;i<this.moduleCount-8;i++){var v=i%2==0; if(this.modules[6][i]===null)this.modules[6][i]=v; if(this.modules[i][6]===null)this.modules[i][6]=v;}
-    var inc=-1,row=this.moduleCount-1,bit=0,byt=0;
-    for(var col=this.moduleCount-1; col>0; col-=2){ if(col==6) col--; while(true){ for(var c=0;c<2;c++){var cc=col-c; if(this.modules[row][cc]===null){var dark=false; if(byt<bytes.length){ dark=((bytes[byt]>>> (7-bit))&1)==1; bit++; if(bit==8){bit=0; byt++;} } this.modules[row][cc]=dark; } } row+=inc; if(row<0||row>=this.moduleCount){row-=inc; inc=-inc; break;} } }
-  },
-  toSVG:function(sz, m){sz=sz||4; m=(m==null)?2:m; var c=this.moduleCount, size=(c+m*2)*sz;
-    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#FFFFFF"/>';
-    for(var r=0;r<c;r++)for(var col=0;col<c;col++){ if(this.modules[r][col]) svg+='<rect x="'+((col+m)*sz)+'" y="'+((r+m)*sz)+'" width="'+sz+'" height="'+sz+'" fill="#000000"/>'; }
-    svg+='</svg>'; return svg;}
-  }; w.MiniQR=QRCode;
-})(window);
-  </script>
-
-  <script>
-    // ===== Sobre: auto + por scroll =====
-    const env = document.getElementById('envelope');
-    const openByScroll = () => {
-      const rect = env.getBoundingClientRect();
-      const vh = window.innerHeight || 0;
-      if (rect.bottom < vh * 0.72) {
-        env.classList.add('open');
-        window.removeEventListener('scroll', openByScroll);
-      }
-    };
-    window.addEventListener('scroll', openByScroll, {passive:true});
-    window.addEventListener('load', () => {
-      setTimeout(()=>env.classList.add('open'), 1200); // auto abrir a los ~1.2s
-      openByScroll();
-    });
-
-    // ===== Countdown =====
-    const EVENT_DATE = new Date("2026-06-27T19:00:00-06:00").getTime();
-    const dEl = document.getElementById('d'), hEl = document.getElementById('h'),
-          mEl = document.getElementById('m'), sEl = document.getElementById('s');
-    function tick(){
-      const now = Date.now();
-      let diff = Math.max(0, EVENT_DATE - now);
-      const days = Math.floor(diff / 86400000); diff -= days*86400000;
-      const hrs  = Math.floor(diff / 3600000); diff -= hrs*3600000;
-      const min  = Math.floor(diff / 60000);   diff -= min*60000;
-      const sec  = Math.floor(diff / 1000);
-      dEl.textContent = days; hEl.textContent = hrs; mEl.textContent = min; sEl.textContent = sec;
-    }
-    tick(); setInterval(tick, 1000);
-
-    // ===== Audio robusto =====
-    const audio = document.getElementById('bgm');
-    const bar   = document.getElementById('audioBar');
-    const btn   = document.getElementById('toggleAudio');
-    function hideAudioBar(){ bar.style.display = 'none'; }
-    function setUI(playing){ if (playing){ bar.classList.remove('paused'); btn.textContent='Pause'; } else { bar.classList.add('paused'); btn.textContent='Play'; } }
-    if (audio){ audio.addEventListener('error', hideAudioBar, {once:true});
-      window.addEventListener('load', async () => {
-        try { await audio.play(); setTimeout(async () => { try{ audio.muted=false; await audio.play(); setUI(true);}catch{ audio.muted=true; setUI(false);} }, 400);}
-        catch { setUI(false); }
-      });
-      btn.addEventListener('click', async () => {
-        if (audio.paused){ try{ audio.muted=false; await audio.play(); setUI(true);}catch{ audio.muted=true; await audio.play(); setUI(true);} }
-        else { audio.pause(); setUI(false); }
-      });
-      window.addEventListener('pointerdown', async () => {
-        try{ audio.muted=false; if (audio.paused) await audio.play(); setUI(true);}catch{}
-      }, {once:true, passive:true});
-    } else { hideAudioBar(); }
-
-    // ===== Personalización por idInvitado + guests.json =====
-    const params = new URLSearchParams(location.search);
-    const idInv = params.get('idInvitado') || '';
-    const guestLine = document.getElementById('guestLine');
-    const nameInput = document.getElementById('nameInput');
-    const guestsInput = document.getElementById('guestsInput');
-    const waBtn = document.getElementById('waBtn');
-    const waText = document.getElementById('waText');
-    const qrDiv = document.getElementById('qrcode');
-    const qrLabel = document.getElementById('qrLabel');
-
-    // Tel. WhatsApp destino (reemplaza por tu número real, e.g. 52XXXXXXXXXX)
-    const WA_PHONE = 'PHONE_EJEMPLO';
-
-    function buildWAText(guest){
-      const nombre = guest?.nombre || 'Invitado';
-      const mesa   = guest?.mesa   || '—';
-      const boletos= guest?.boletos?? '—';
-      const url    = location.origin + location.pathname + (guest?.id ? ('?idInvitado='+encodeURIComponent(guest.id)) : '');
-      return `Hola, soy ${nombre}. Confirmo mi asistencia a los XV de Jimena.\nMesa: ${mesa}\nBoletos: ${boletos}\nMi liga: ${url}`;
-    }
-    function setWhatsApp(guest){
-      const text = buildWAText(guest);
-      const wa   = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
-      waBtn.href = wa;
-      waText.textContent = 'Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).';
-    }
-    function setQR(guest){
-      const url = location.origin + location.pathname + (guest?.id ? ('?idInvitado='+encodeURIComponent(guest.id)) : '');
