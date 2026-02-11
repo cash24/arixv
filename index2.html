@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Invitación XV – Karla (inspirada)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#d8a7b1" />
+  <style>
+    :root{
+      --bg:#fff9fb;            /* fondo suave */
+      --ink:#2b2b2b;          /* texto principal */
+      --muted:#6f6f6f;        /* texto secundario */
+      --brand:#d8a7b1;        /* acento rosa viejo */
+      --brand-deep:#8c5a63;   /* acento profundo */
+      --gold:#b79b5b;         /* dorado suave */
+      --serif: "Georgia", "Times New Roman", serif;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--ink); background:var(--bg);
+      font-family:var(--sans); line-height:1.6;
+    }
+    a{color:var(--brand-deep); text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height: 92svh;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:#000;
+    }
+    .hero__bg{
+      position:absolute; inset:0;
+      background:url('hero-karla.jpg') center/cover no-repeat; /* <-- Cambia la imagen */
+      filter: grayscale(8%) saturate(110%) contrast(104%);
+      transform:scale(1.04);
+    }
+    .hero__overlay{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.5));
+    }
+    .hero__content{
+      position:relative; z-index:2; text-align:center; padding: 0 1.2rem;
+      color:#fff;
+      animation:fadeUp .9s ease both;
+    }
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    .badge{
+      display:inline-block; letter-spacing:.18em; font-size:.68rem; opacity:.9;
+      text-transform:uppercase; padding:.35rem .6rem; border:1px solid rgba(255,255,255,.55);
+      border-radius:999px; margin-bottom:.8rem;
+      backdrop-filter: blur(2px);
+    }
+    .hero__title{
+      font-family:var(--serif);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height:1.1; margin:.2rem 0 .4rem;
+    }
+    .hero__subtitle{
+      font-size: clamp(.95rem, 2.5vw, 1.15rem);
+      opacity:.95; letter-spacing:.02em;
+    }
+    .pill{
+      margin-top:1.2rem;
+      display:inline-flex; align-items:center; gap:.5rem;
+      background: #ffffff; color:#1b1b1b;
+      border-radius:999px; padding:.7rem 1.05rem;
+      box-shadow:var(--shadow);
+      transition: transform .2s ease;
+    }
+    .pill:hover{ transform: translateY(-1px) }
+
+    /* SECCIONES */
+    .section{
+      padding: clamp(2rem, 5vw, 3.4rem) 1.2rem;
+      max-width: 980px; margin: 0 auto;
+    }
+    .section h2{
+      font-family:var(--serif);
+      font-weight:600; letter-spacing:.02em;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      margin:0 0 1rem;
+      color:#1b1b1b;
+    }
+    .lead{ color:var(--muted); margin-top:.2rem }
+
+    .grid{
+      display:grid; gap:1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px){
+      .grid.two{grid-template-columns: 1fr 1fr}
+      .grid.three{grid-template-columns: repeat(3, 1fr)}
+    }
+
+    .card{
+      background:#fff; border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:1.1rem 1.2rem;
+    }
+    .chip{
+      display:inline-block; background:#f3eaed; color:#5b3640; border-radius:999px;
+      padding:.32rem .7rem; font-size:.78rem; letter-spacing:.03em;
+    }
+    .kv{
+      margin:.35rem 0; font-size:1.05rem;
+    }
+    .kv strong{color:#1b1b1b}
+    .muted{color:var(--muted)}
+
+    /* CONTADOR */
+    .countdown{
+      display:flex; gap:.7rem; flex-wrap:wrap; margin-top:.6rem;
+    }
+    .count{
+      min-width:82px; text-align:center; background:#fff; border-radius:12px; padding:.6rem .8rem;
+      box-shadow:var(--shadow);
+    }
+    .count b{display:block; font-size:1.4rem}
+    .count span{font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+
+    /* MAPA */
+    .map{
+      border:0; width:100%; height:320px; border-radius: var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    /* FOOTER */
+    .footer{
+      text-align:center; color:#7b7b7b; font-size:.9rem;
+      padding:2rem 1rem 3rem;
+    }
+    .btn{
+      display:inline-block; border-radius: 12px; padding:.8rem 1rem; border:0;
+      background:linear-gradient(135deg, var(--brand), var(--gold));
+      color:#fff; box-shadow:var(--shadow);
+      cursor:pointer; transition:filter .2s ease, transform .2s ease;
+      font-weight:600;
+    }
+    .btn:hover{ filter:brightness(1.04); transform: translateY(-1px)}
+    .center{text-align:center}
+
+    /* anclas suaves */
+    html{ scroll-behavior:smooth; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" id="inicio">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <div class="badge">Quince Años</div>
+      <h1 class="hero__title">Karla Sofía</h1>
+      <p class="hero__subtitle">Sábado 15 de agosto, 2026 · 7:00 PM · Salón Magnolia</p>
+      <a class="pill" href="#rsvp">Confirmar asistencia →</a>
+    </div>
+  </header>
+
+  <!-- DETALLES -->
+  <section class="section" id="detalles">
+    <h2>Detalles del evento</h2>
+    <p class="lead">Acompáñanos a celebrar los XV años de Karla Sofía. Aquí tienes toda la información importante.</p>
+
+    <div class="grid two" style="margin-top:1rem">
+      <div class="card">
+        <span class="chip">Ceremonia</span>
+        <p class="kv"><strong>Parroquia San Miguel Arcángel</strong></p>
+        <p class="muted">5:30 PM · Av. Jardines #123, Coyoacán</p>
+      </div>
+      <div class="card">
+        <span class="chip">Recepción</span>
+        <p class="kv"><strong>Salón Magnolia</strong></p>
+        <p class="muted">7:00 PM · Calz. de las Rosas 250, CDMX</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="section" id="cuenta">
+    <h2>¡Faltan…!</h2>
+    <div id="countdown" class="countdown">
+      <div class="count"><b id="d">--</b><span>Días</span></div>
+      <div class="count"><b id="h">--</b><span>Horas</span></div>
+      <div class="count"><b id="m">--</b><span>Min</span></div>
+      <div class="count"><b id="s">--</b><span>Seg</span></div>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="section" id="ubicacion">
+    <h2>Ubicación</h2>
+    <div class="grid two">
+      <div class="card">
+        <p><strong>Salón Magnolia</strong></p>
+        <p class="muted">Calz. de las Rosas 250, Coyoacán, CDMX</p>
+        <p class="muted">Estacionamiento disponible · Valet</p>
+        <p class="muted">Código de vestimenta: <strong>Formal</strong></p>
+        <div class="center" style="margin-top:.8rem">
+          <a class="btn" target="_blank" href="https://maps.google.com/?q=Calzada%20de%20las%20Rosas%20250%20Coyoacan%20CDMX">Abrir en Maps</a>
+        </div>
+      </div>
+      <iframe class="map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Coyoac%C3%A1n%20CDMX&output=embed"></iframe>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section" id="rsvp">
+    <h2>Confirma tu asistencia</h2>
+    <p class="lead">Por favor confirma antes del 1 de agosto.</p>
+    <div class="card">
+      <form id="form-rsvp" class="grid two" onsubmit="return submitRSVP(event)">
+        <div>
+          <label>Nombre completo<br/>
+            <input required name="name" style="width:100%;padding:.7rem;border-radius:10px;border:1px solid #ddd;">
+          </label>
+        </div>
+        <div>
+          <label>Contacto (WhatsApp)<br/>
+            <input required name="phone" style="width:100%;padding:.7rem;border-radius:10px;border:1px solid #ddd;">
+          </label>
+        </div>
+        <div>
+          <label>Asistentes<br/>
+            <input required type="number" min="1" max="8" name="guests" value="1"
+                   style="width:100%;padding:.7rem;border-radius:10px;border:1px solid #ddd;">
+          </label>
+        </div>
+        <div>
+          <label>Mensaje<br/>
+            <input name="note" placeholder="Alergias, peticiones, etc."
+                   style="width:100%;padding:.7rem;border-radius:10px;border:1px solid #ddd;">
+          </label>
+        </div>
+        <div class="center" style="grid-column:1/-1">
+          <button class="btn" type="submit">Enviar confirmación</button>
+        </div>
+      </form>
+      <p id="rsvp-ok" class="center" style="display:none;margin-top:1rem;color:var(--brand-deep);font-weight:600">
+        ¡Gracias! Hemos recibido tu confirmación.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Con cariño, Familia Ramírez · 2026</p>
+    <p><a href="#inicio">Volver arriba</a></p>
+  </footer>
+
+  <script>
+    // === Countdown (cambia la fecha del evento) ===
+    const EVENT_DATE = new Date("2026-08-15T19:00:00-06:00").getTime();
+    const dEl = document.getElementById('d');
+    const hEl = document.getElementById('h');
+    const mEl = document.getElementById('m');
+    const sEl = document.getElementById('s');
+
+    function tick(){
+      const now = Date.now();
+      let diff = Math.max(0, EVENT_DATE - now);
+      const days = Math.floor(diff / (1000*60*60*24));
+      diff -= days*(1000*60*60*24);
+      const hours = Math.floor(diff / (1000*60*60));
+      diff -= hours*(1000*60*60);
+      const mins = Math.floor(diff / (1000*60));
+      diff -= mins*(1000*60);
+      const secs = Math.floor(diff / 1000);
+      dEl.textContent = days; hEl.textContent = hours; mEl.textContent = mins; sEl.textContent = secs;
+    }
+    tick(); setInterval(tick, 1000);
+
+    // === RSVP "fake" (sólo demo). Integra con tu backend/Google Form/Zapier. ===
+    function submitRSVP(e){
+      e.preventDefault();
+      // Aquí puedes hacer fetch(...) a tu API
+      document.getElementById('form-rsvp').style.display = 'none';
+      document.getElementById('rsvp-ok').style.display = 'block';
+      return false;
+    }
+  </script>
+</body>
+</html>
+``
