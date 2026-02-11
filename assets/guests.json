@@ -1,0 +1,8 @@
+
+{
+  "invitados": [
+    { "id": "INV01", "nombre": "María Fernanda López", "mesa": 3, "boletos": 2 },
+    { "id": "INV02", "nombre": "Familia Ramírez García", "mesa": 5, "boletos": 4 },
+    { "id": "INV03", "nombre": "Carlos Ortega", "mesa": 2, "boletos": 1 }
+  ]
+}
