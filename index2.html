@@ -2,113 +2,87 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>XV – Jimena | Tema Dorado & Vino</title>
+  <title>XV – Jimena | Dorado & Vino</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#6c1b2a" />
   <style>
     :root{
-      /* === Paleta dorado & vino === */
-      --vino: #6c1b2a;         /* principal vino */
-      --vino-deep: #54131f;    /* vino profundo */
-      --gold: #caa27a;         /* dorado suave */
-      --gold-deep: #a88560;    /* dorado profundo */
-      --bg: #fff8f5;           /* marfil cálido */
-      --ink: #222;
-      --muted: #7a6d63;
-      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-      --sans: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-      --radius: 16px;
-      --shadow: 0 14px 40px rgba(0,0,0,.12);
+      --vino: #6c1b2a; --vino-deep:#54131f;
+      --gold:#caa27a; --gold-deep:#a88560;
+      --bg:#fff8f5; --ink:#222; --muted:#7a6d63;
+      --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans:system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      --radius:16px; --shadow:0 14px 40px rgba(0,0,0,.12);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
     a{color:var(--vino-deep);text-decoration:none}
     img{display:block;max-width:100%}
 
-    /* ====== HERO con sobre ====== */
+    /* ===== HERO ===== */
     .hero{
-      position:relative; min-height:100svh; display:grid; place-items:center;
-      overflow:hidden; padding:clamp(1rem,3vw,2rem);
+      position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden;
+      padding:clamp(1rem,3vw,2rem);
+      /* FONDO de respaldo (si no hay imagen) */
       background:
-        radial-gradient(70% 60% at 50% 0%, #ffffff 0 45%, transparent 70%),
-        var(--bg);
+        radial-gradient(60% 60% at 50% 0%, rgba(255,255,255,.9) 0 40%, rgba(255,255,255,0) 70%),
+        linear-gradient(135deg, #fdf5ef 0%, #f8ece3 40%, #f4e5db 100%);
     }
     .hero__bg{
       position:absolute; inset:0; z-index:0;
-      background:url('assets/hero.jpg') center/cover no-repeat; /* <-- CAMBIA la imagen */
+      /* Intento de imagen; si no está, igual se ve el degradado del contenedor */
+      background: url('assets/hero.jpg') center/cover no-repeat;
       opacity:.16; filter:grayscale(8%) saturate(105%); transform:scale(1.05);
     }
 
+    /* ===== SOBRE ===== */
     .envelope{position:relative;z-index:1;width:min(640px,calc(100% - 2rem));aspect-ratio:3/2;perspective:1200px}
     .envelope__body{position:relative;width:100%;height:100%}
-
-    /* Carta interior */
-    .card{
-      position:absolute; inset:0; background:#fff; border-radius:12px; box-shadow:var(--shadow);
-      display:grid; place-items:center; padding:clamp(1rem,3.5vw,2.2rem);
-      transition:transform .8s cubic-bezier(.2,.7,.2,1); transform:translateY(18px); overflow:hidden;
-    }
-    .card__inner{text-align:center}
-    .card__badge{
-      display:inline-block; padding:.28rem .6rem; border:1px solid #e6d6c7; border-radius:999px;
-      letter-spacing:.16em; font-size:.72rem; text-transform:uppercase; color:#8b7a6e;
-      background:linear-gradient(135deg,#fff,#fff8f2);
-    }
-    .card__title{
-      margin:.5rem 0 .2rem; line-height:1.1; font-family:var(--serif);
-      font-size:clamp(2rem,7vw,3.5rem); color:var(--vino-deep);
-    }
-    .card__subtitle{color:#6a5b52;font-size:clamp(.95rem,2.4vw,1.1rem)}
-
-    /* Base del sobre y tapa (tema dorado/vino) */
-    .paper{
-      position:absolute; inset:0; border-radius:12px;
-      background:linear-gradient(180deg,#fff,#f6efe7);
-      box-shadow:var(--shadow);
-      outline:2px solid rgba(202,162,122,.15);
-    }
+    .paper{position:absolute;inset:0;border-radius:12px;background:linear-gradient(180deg,#fff,#f6efe7);box-shadow:var(--shadow);outline:2px solid rgba(202,162,122,.15)}
     .flap{
-      position:absolute; left:0; right:0; top:0; height:56%;
-      transform-origin:top center; transform:rotateX(0deg);
+      position:absolute;left:0;right:0;top:0;height:56%;
+      transform-origin:top center;transform:rotateX(0deg);
       transition:transform 1s cubic-bezier(.2,.8,.2,1);
-      background:
-        linear-gradient(180deg, #f0e3d6 0%, #e7d4c0 55%, #e3c8af 100%);
-      /* filete vino */
+      background:linear-gradient(180deg,#f0e3d6 0%,#e7d4c0 55%,#e3c8af 100%);
       border-bottom:6px solid var(--vino);
       clip-path:path("M0,0 H100% V80% C75% 88%, 25% 88%, 0 80% Z");
       box-shadow:0 10px 16px rgba(0,0,0,.08) inset;
     }
     .lip{
-      position:absolute; left:0; right:0; top:46%; height:16%;
-      background:linear-gradient(180deg, #ead7c2, #e1c9b1);
-      border-bottom-left-radius:12px; border-bottom-right-radius:12px; z-index:2;
-      box-shadow:0 10px 20px rgba(0,0,0,.08);
-      border-top:3px solid rgba(108,27,42,.15); /* sutil vino */
+      position:absolute;left:0;right:0;top:46%;height:16%;z-index:2;
+      background:linear-gradient(180deg,#ead7c2,#e1c9b1);
+      border-bottom-left-radius:12px;border-bottom-right-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.08);
+      border-top:3px solid rgba(108,27,42,.15);
     }
     .seal{
-      position:absolute; left:50%; top:42%; transform:translate(-50%,-50%);
-      width:72px; height:72px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #fff5ea 0 36%, #ecd7c2 37% 100%);
-      border:2px solid #dfc7ad; box-shadow:0 6px 14px rgba(0,0,0,.12);
-      display:grid; place-items:center; font-weight:800; letter-spacing:.08em;
-      color:var(--vino-deep);
+      position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+      width:72px;height:72px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%,#fff5ea 0 36%,#ecd7c2 37% 100%);
+      border:2px solid #dfc7ad;box-shadow:0 6px 14px rgba(0,0,0,.12);
+      display:grid;place-items:center;color:var(--vino-deep);font-weight:800;letter-spacing:.08em
     }
-    .seal::after{
-      content:"XV"; font-family:var(--serif); font-size:1.1rem;
+    .seal::after{content:"XV";font-family:var(--serif);font-size:1.1rem}
+
+    .card{
+      position:absolute;inset:0;background:#fff;border-radius:12px;box-shadow:var(--shadow);
+      display:grid;place-items:center;padding:clamp(1rem,3.5vw,2.2rem);
+      transition:transform .8s cubic-bezier(.2,.7,.2,1);transform:translateY(18px);overflow:hidden
     }
+    .card__inner{text-align:center}
+    .card__badge{display:inline-block;padding:.28rem .6rem;border:1px solid #e6d6c7;border-radius:999px;letter-spacing:.16em;font-size:.72rem;text-transform:uppercase;color:#8b7a6e;background:linear-gradient(135deg,#fff,#fff8f2)}
+    .card__title{margin:.5rem 0 .2rem;line-height:1.1;font-family:var(--serif);font-size:clamp(2rem,7vw,3.5rem);color:var(--vino-deep)}
+    .card__subtitle{color:#6a5b52;font-size:clamp(.95rem,2.4vw,1.1rem)}
 
-    /* Estado abierto */
-    .envelope.open .flap{ transform:rotateX(-142deg); box-shadow:0 24px 24px rgba(0,0,0,.10) }
-    .envelope.open .card{ transform:translateY(-22%) }
+    /* Estado abierto (al hacer scroll) */
+    .envelope.open .flap{transform:rotateX(-142deg);box-shadow:0 24px 24px rgba(0,0,0,.10)}
+    .envelope.open .card{transform:translateY(-22%)}
 
-    /* ===== Secciones ===== */
+    /* ===== SECCIONES ===== */
     .section{max-width:980px;margin:0 auto;padding:clamp(2rem,5vw,3.6rem) 1rem}
     .section h2{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.2rem);margin:0 0 1rem;color:var(--vino-deep)}
     .lead{color:var(--muted)}
     .grid{display:grid;gap:1rem;grid-template-columns:1fr}
     @media (min-width:768px){ .grid.two{grid-template-columns:1fr 1fr} }
-
     .card2{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(1rem,2.2vw,1.4rem);border:1px solid rgba(202,162,122,.22)}
     .chip{display:inline-block;border-radius:999px;padding:.3rem .7rem;background:#f3e7dc;color:#5d4030;font-size:.8rem;letter-spacing:.04em}
     .kv{margin:.4rem 0}.muted{color:var(--muted)}
@@ -119,57 +93,31 @@
     .count b{display:block;font-size:1.5rem;color:var(--vino-deep)}
     .count span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 
-    /* Botones */
+    /* Botones / mapa */
     .center{text-align:center}
-    .btn{
-      display:inline-block;border:0;border-radius:12px;cursor:pointer;padding:.9rem 1.2rem;color:#fff;
-      background:linear-gradient(135deg, var(--gold), var(--vino)); box-shadow:var(--shadow); font-weight:700; letter-spacing:.02em;
-      transition:filter .2s ease, transform .2s ease;
-    }
+    .btn{display:inline-block;border:0;border-radius:12px;cursor:pointer;padding:.9rem 1.2rem;color:#fff;background:linear-gradient(135deg,var(--gold),var(--vino));box-shadow:var(--shadow);font-weight:700;letter-spacing:.02em;transition:filter .2s ease, transform .2s ease}
     .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
-
-    /* Mapa */
     .map{width:100%;height:320px;border:0;border-radius:12px;box-shadow:var(--shadow)}
 
-    /* Barra flotante de audio */
-    .audio-bar{
-      position:fixed; right:14px; bottom:14px; z-index:9999;
-      display:flex; align-items:center; gap:.6rem;
-      background:#fff; border:1px solid rgba(202,162,122,.38);
-      border-radius:999px; padding:.4rem .6rem; box-shadow:var(--shadow);
-    }
-    .audio-bar__dot{
-      width:10px;height:10px;border-radius:50%;background:var(--gold-deep);box-shadow:0 0 0 rgba(202,162,122,.7);
-      animation:pulse 1.8s infinite;
-    }
+    /* Audio bar */
+    .audio-bar{position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid rgba(202,162,122,.38);border-radius:999px;padding:.4rem .6rem;box-shadow:var(--shadow)}
+    .audio-bar__dot{width:10px;height:10px;border-radius:50%;background:var(--gold-deep);box-shadow:0 0 0 rgba(202,162,122,.7);animation:pulse 1.8s infinite}
     .audio-bar.paused .audio-bar__dot{background:#bbb;animation:none}
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(202,162,122,.55)}
-      70%{box-shadow:0 0 0 14px rgba(202,162,122,0)}
-      100%{box-shadow:0 0 0 0 rgba(202,162,122,0)}
-    }
-    .audio-btn{
-      border:0; background:linear-gradient(135deg,var(--vino),var(--gold));
-      color:#fff; border-radius:999px; padding:.45rem .8rem; cursor:pointer; font-weight:700;
-    }
-
-    /* Nota */
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(202,162,122,.55)}70%{box-shadow:0 0 0 14px rgba(202,162,122,0)}100%{box-shadow:0 0 0 0 rgba(202,162,122,0)}}
+    .audio-btn{border:0;background:linear-gradient(135deg,var(--vino),var(--gold));color:#fff;border-radius:999px;padding:.45rem .8rem;cursor:pointer;font-weight:700}
     .note{font-size:.9rem;color:#6b5b52;background:#fcf3ea;border-left:4px solid var(--gold);padding:.7rem .9rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
   </style>
 </head>
 <body>
-
-  <!-- ===== HERO / SOBRE ===== -->
+  <!-- HERO + SOBRE -->
   <header class="hero" id="inicio">
     <div class="hero__bg" aria-hidden="true"></div>
-
     <div class="envelope" id="envelope">
       <div class="envelope__body">
         <div class="paper" aria-hidden="true"></div>
         <div class="flap" aria-hidden="true"></div>
         <div class="lip" aria-hidden="true"></div>
         <div class="seal" title="Quince Años"></div>
-
         <div class="card">
           <div class="card__inner">
             <span class="card__badge">Quince Años</span>
@@ -182,7 +130,7 @@
     </div>
   </header>
 
-  <!-- ===== DETALLES ===== -->
+  <!-- DETALLES -->
   <section class="section" id="detalles">
     <h2>Detalles del evento</h2>
     <p class="lead">Acompáñanos a celebrar los XV años de Jimena. Aquí tienes la información clave de la ceremonia y recepción.</p>
@@ -201,7 +149,7 @@
     <p class="note" style="margin-top:1rem">Código de vestimenta: <strong>Formal</strong>. Contaremos con estacionamiento y valet.</p>
   </section>
 
-  <!-- ===== CUENTA REGRESIVA ===== -->
+  <!-- COUNTDOWN -->
   <section class="section" id="cuenta">
     <h2>¡Faltan…!</h2>
     <div id="countdown" class="countdown">
@@ -212,7 +160,7 @@
     </div>
   </section>
 
-  <!-- ===== UBICACIÓN ===== -->
+  <!-- UBICACIÓN -->
   <section class="section" id="ubicacion">
     <h2>Ubicación</h2>
     <div class="grid two">
@@ -223,12 +171,12 @@
           https://maps.google.com/?q=Calzada%20del%20Bosque%20456%20Coyoacan%20CDMXAbrir en Google Maps</a>
         </div>
       </div>
-      <!-- Reemplaza el src por tu embed -->
+      <!-- Reemplaza por tu embed real si quieres -->
       https://www.google.com/maps?q=Coyoac%C3%A1n%20CDMX&output=embed</iframe>
     </div>
   </section>
 
-  <!-- ===== RSVP ===== -->
+  <!-- RSVP -->
   <section class="section" id="rsvp">
     <h2>Confirma tu asistencia</h2>
     <p class="lead">Por favor confirma antes del 10 de junio.</p>
@@ -266,21 +214,21 @@
     </div>
   </section>
 
-  <!-- ===== Barra de audio + elemento audio local ===== -->
+  <!-- Audio bar (se oculta si no hay música o si el navegador bloquea reproducir) -->
   <div class="audio-bar paused" id="audioBar" title="Música">
     <span class="audio-bar__dot" aria-hidden="true"></span>
     <button class="audio-btn" id="toggleAudio" type="button">Play</button>
   </div>
 
-  <audio id="bgm"
-         src="assets/music.mp3"   <!-- coloca tu archivo aquí -->
+  <!-- Audio local (si no existe, JS ocultará la barra) -->
+  assets/music.mp3
          preload="auto"
          autoplay
          muted
          loop></audio>
 
   <script>
-    // ===== Sobre: abrir con scroll =====
+    // ===== Abrir sobre por scroll =====
     const env = document.getElementById('envelope');
     const openByScroll = () => {
       const rect = env.getBoundingClientRect();
@@ -293,7 +241,7 @@
     window.addEventListener('scroll', openByScroll, {passive:true});
     window.addEventListener('load', openByScroll);
 
-    // ===== Cuenta regresiva (cambia la fecha/hora) =====
+    // ===== Countdown =====
     const EVENT_DATE = new Date("2026-06-27T19:00:00-06:00").getTime();
     const dEl = document.getElementById('d'), hEl = document.getElementById('h'),
           mEl = document.getElementById('m'), sEl = document.getElementById('s');
@@ -308,87 +256,48 @@
     }
     tick(); setInterval(tick, 1000);
 
-    // ===== Audio: autoplay + fallback =====
+    // ===== Audio robusto =====
     const audio = document.getElementById('bgm');
     const bar   = document.getElementById('audioBar');
     const btn   = document.getElementById('toggleAudio');
 
-    // Título/botón según estado
+    function hideAudioBar(){ bar.style.display = 'none'; }
     function setUI(playing){
-      if (playing){
-        bar.classList.remove('paused');
-        btn.textContent = 'Pause';
-      } else {
-        bar.classList.add('paused');
-        btn.textContent = 'Play';
-      }
+      if (playing){ bar.classList.remove('paused'); btn.textContent = 'Pause'; }
+      else { bar.classList.add('paused'); btn.textContent = 'Play'; }
     }
 
-    // Intento 1: reproducir en carga (muted) para “engranar” autoplay
+    // Si el archivo no existe o no carga, ocultar barra.
+    audio.addEventListener('error', hideAudioBar, {once:true});
+
+    // Intento de autoplay (muted) + desmute
     window.addEventListener('load', async () => {
       try {
-        await audio.play();          // play silenciado (muted)
-        // Intento 2 (opcional): desmutear tras un micro‑delay (algunos navegadores lo permiten).
+        await audio.play();              // reproducir silenciado
         setTimeout(async () => {
-          try {
-            audio.muted = false;     // desmute
-            await audio.play();      // renovar play por si se pausó al desmutear
-            setUI(true);
-          } catch {
-            // Si falla, dejar botón en “Play”
-            audio.muted = true;      // mantener mute si no permite
-            setUI(false);
-          }
-        }, 500);
-      } catch {
-        // Autoplay bloqueado por política → esperar gesto del usuario
-        setUI(false);
-      }
+          try { audio.muted = false; await audio.play(); setUI(true); }
+          catch { audio.muted = true; setUI(false); }
+        }, 400);
+      } catch { setUI(false); }
     });
 
-    // Botón manual (fallback universal)
+    // Botón manual (fallback)
     btn.addEventListener('click', async () => {
       if (audio.paused){
-        try {
-          audio.muted = false;   // reproducir con sonido
-          await audio.play();
-          setUI(true);
-        } catch {
-          // Si aun así falla, probar en mute
-          audio.muted = true;
-          await audio.play();
-          setUI(true);
-        }
-      } else {
-        audio.pause();
-        setUI(false);
-      }
+        try { audio.muted = false; await audio.play(); setUI(true); }
+        catch { audio.muted = true; await audio.play(); setUI(true); }
+      } else { audio.pause(); setUI(false); }
     });
 
-    // Si el usuario toca/scroll, reintenta desmutear una sola vez
-    let triedUnmuteOnInteract = false;
-    function tryUnmuteOnInteract(){
-      if (triedUnmuteOnInteract) return;
-      triedUnmuteOnInteract = true;
-      setTimeout(async () => {
-        try{
-          audio.muted = false;
-          if (audio.paused) await audio.play();
-          setUI(true);
-        }catch{ /* ignorar */ }
-      }, 120);
-      window.removeEventListener('pointerdown', tryUnmuteOnInteract);
-    }
-    window.addEventListener('pointerdown', tryUnmuteOnInteract, {once:true, passive:true});
+    // Primer interacción: reintentar desmutear
+    let triedUnmute = false;
+    function tryUnmute(){ if (triedUnmute) return; triedUnmute = true; setTimeout(async () => {
+      try { audio.muted = false; if (audio.paused) await audio.play(); setUI(true); } catch {}
+    }, 120); window.removeEventListener('pointerdown', tryUnmute); }
+    window.addEventListener('pointerdown', tryUnmute, {once:true, passive:true});
 
-    // ===== RSVP demo =====
-    function submitRSVP(e){
-      e.preventDefault();
-      // Aquí puedes hacer fetch(...) a tu backend/Google Forms/Zapier
-      document.getElementById('form-rsvp').style.display='none';
-      document.getElementById('rsvp-ok').style.display='block';
-      return false;
-    }
+    // RSVP demo
+    function submitRSVP(e){ e.preventDefault(); document.getElementById('form-rsvp').style.display='none'; document.getElementById('rsvp-ok').style.display='block'; return false; }
   </script>
 </body>
 </html>
