@@ -16,9 +16,9 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    /* Ocultar barra de scroll (sin bloquear el desplazamiento) */
+    /* Ocultar barra de scroll (sin bloquear desplazamiento) */
     html.no-scrollbar { scrollbar-width: none; }
-    html.no-scrollbar::-webkit-scrollbar { width: 0; height: 0; }
+    html.no-scrollbar::-webkit-scrollbar { width:0; height:0; }
 
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
@@ -31,9 +31,9 @@
     /* ===== HERO ===== */
     .hero{
       position:relative;
-      min-height:100vh;           /* full-screen */
+      min-height:100vh; /* full-screen */
       display:grid; place-items:center;
-      overflow:hidden; padding:0; /* sin padding para que el sobre gane altura */
+      overflow:hidden; padding:0;
       background:
         radial-gradient(60% 60% at 50% 0%, rgba(255,255,255,.9) 0 40%, rgba(255,255,255,0) 70%),
         linear-gradient(135deg, #fdf5ef 0%, #f8ece3 40%, #f4e5db 100%);
@@ -128,7 +128,7 @@
     .qr-box{display:grid;place-items:center;padding:1rem;background:#fff;border:1px solid rgba(202,162,122,.22);border-radius:12px;box-shadow:var(--shadow)}
     .qr-name{margin-top:.5rem;color:var(--muted);font-size:.9rem}
 
-    /* Galería */
+    /* Galería – vacía (sin placeholders inválidos) */
     .gallery{display:grid;gap:.6rem;grid-template-columns:repeat(2,1fr)}
     @media (min-width:768px){ .gallery{grid-template-columns:repeat(3,1fr)} }
     .thumb{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#f2e8de,#e9dbcf);cursor:pointer;border:1px solid rgba(202,162,122,.25)}
@@ -181,7 +181,7 @@
             <p class="card__subtitle">Sábado 27 de junio, 2026 · 5:30 PM (Misa) · 7:00 PM (Recepción)</p>
             <p id="guestLine" class="card__guest">Invitado especial</p>
             <p style="margin-top:1rem">
-              <a href="#detalles" class="btn-outline">Ver detalles →</a>
+              <a class="btn-outline" href="#detalles">Ver detalles →</a>
             </p>
           </div>
         </div>
@@ -200,7 +200,7 @@
         <p class="kv"><strong>Parroquia Santa María</strong></p>
         <p class="muted">5:30 PM · Av. Hidalgo 123, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
+          <a class="btn-outline" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123" target="_blank" rel="noopener">Abrir en Google Maps</a>
         </p>
       </div>
       <div class="card2">
@@ -208,7 +208,7 @@
         <p class="kv"><strong>Salón Arcadia</strong></p>
         <p class="muted">7:00 PM · Calz. del Bosque 456, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
+          <a class="btn-outline" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456" target="_blank" rel="noopener">Abrir en Google Maps</a>
         </p>
       </div>
     </div>
@@ -252,17 +252,9 @@
   <!-- GALERÍA (LIGHTBOX) -->
   <section class="section" id="galeria">
     <h2>Sesión de fotos</h2>
-    <p class="lead">Algunas imágenes para ir calentando motores.</p>
+    <p class="lead">Sube tus fotos a <code>assets/gallery/</code> y aparecerán aquí.</p>
 
-    <div class="gallery" id="gallery">
-      <!-- Si no existen, no rompe; súbelas cuando gustes -->
-      <div class="thumb" data-src="assets/gallery/1.jpg"><img src="assets/gallery/1.jpg" alt="Foto 1" loading="lazy"></div>
-      <div class="thumb" data-src="assets/gallery/2.jpg"><img src="assets/gallery/2.jpg" alt="Foto 2" loading="lazy"></div>
-      <div class="thumb" data-src="assets/gallery/3.jpg"><img src="assets/gallery/3.jpg" alt="Foto 3" loading="lazy"></div>
-      <div class="thumb" data-src="assets/gallery/4.jpg"><img src="assets/gallery/4.jpg" alt="Foto 4" loading="lazy"></div>
-      <div class="thumb" data-src="assets/gallery/5.jpg"><img src="assets/gallery/5.jpg" alt="Foto 5" loading="lazy"></div>
-      <div class="thumb" data-src="assets/gallery/6.jpg"><img src="assets/gallery/6.jpg" alt="Foto 6" loading="lazy"></div>
-    </div>
+    <div class="gallery" id="gallery"><!-- vacío mientras no haya imágenes --></div>
 
     <!-- Lightbox overlay -->
     <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -375,7 +367,7 @@
   <!-- ===== Lógica principal ===== -->
   <script>
     /* ===== Versionador de assets ===== */
-    const ASSETS_VERSION = '2026-02-11-06';  // súbelo en cada release
+    const ASSETS_VERSION = '2026-02-11-07';  // súbelo en cada release
     const v = (p) => `${p}${p.includes('?') ? '&' : '?'}v=${ASSETS_VERSION}`;
 
     /* ===== Footer DEV ===== */
@@ -393,10 +385,8 @@
     async function fetchWithTimeout(url, ms = 8000, options = {}){
       const controller = new AbortController();
       const t = setTimeout(()=>controller.abort(), ms);
-      try{
-        const res = await fetch(url, { ...options, signal: controller.signal });
-        return res;
-      } finally { clearTimeout(t); }
+      try{ return await fetch(url, { ...options, signal: controller.signal }); }
+      finally{ clearTimeout(t); }
     }
 
     /* ===== Referencias ===== */
@@ -418,11 +408,16 @@
     const appVersion = document.getElementById('appVersion');
     const buildTime  = document.getElementById('buildTime');
 
-    /* Pintar assets con versión */
-    if (heroBg) heroBg.style.backgroundImage = `url('${v('assets/hero.jpg')}')`;
-    if (audio)  audio.src = v('assets/music.mp3');
+    /* ===== HERO IMG segura (solo si existe) ===== */
+    (function setHeroImageSafely(){
+      const url = v('assets/hero.jpg');
+      const img = new Image();
+      img.onload  = () => { if (heroBg) heroBg.style.backgroundImage = `url('${url}')`; };
+      img.onerror = () => { /* sin imagen: se queda el degradado */ };
+      img.src = url;
+    })();
 
-    /* Footer DEV cuando DOM listo */
+    /* ===== Footer DEV cuando DOM listo ===== */
     window.addEventListener('DOMContentLoaded', () => {
       if (!SHOW_DEV_FOOTER) return;
       if (appVersion) appVersion.textContent = ASSETS_VERSION;
@@ -430,45 +425,29 @@
       if (devFooter)  devFooter.hidden = false;
     });
 
-    /* ===== Abrir/cerrar sobre según dirección de scroll (en hero) ===== */
-    let inHero = true;   // hero visible
-    let lastY  = window.scrollY;
-    let touchStartY = null;
+    /* ===== Abrir/cerrar sobre según dirección de scroll (solo en hero) ===== */
+    let inHero = true, lastY = window.scrollY, touchStartY = null;
 
-    const io = new IntersectionObserver(([entry]) => {
-      inHero = entry.isIntersecting;
-    }, { root: null, threshold: 0.18 });
+    const io = new IntersectionObserver(([entry]) => { inHero = entry.isIntersecting; }, { threshold: 0.18 });
     if (heroEl) io.observe(heroEl);
 
     function handleDirection(newY){
       const dy = newY - lastY;
       lastY = newY;
-      if (!inHero) return;
-      if (Math.abs(dy) < 4) return;
+      if (!inHero || Math.abs(dy) < 4) return;
       if (dy > 0) env?.classList.add('open');    // bajando → abrir
       else        env?.classList.remove('open'); // subiendo → cerrar
     }
     window.addEventListener('scroll', () => handleDirection(window.scrollY), { passive:true });
 
-    // Soporte gestos touch
-    window.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches?.[0]?.clientY ?? null;
+    window.addEventListener('touchstart', (e) => { touchStartY = e.touches?.[0]?.clientY ?? null; }, { passive:true });
+    window.addEventListener('touchmove',  (e) => {
+      if (touchStartY == null || !inHero) return;
+      const dy = touchStartY - (e.touches?.[0]?.clientY ?? touchStartY);
+      if (Math.abs(dy) > 6) (dy > 0 ? env?.classList.add('open') : env?.classList.remove('open'));
     }, { passive:true });
 
-    window.addEventListener('touchmove', (e) => {
-      if (touchStartY == null) return;
-      const currentY = e.touches?.[0]?.clientY ?? touchStartY;
-      const dy = touchStartY - currentY;  // >0 bajando
-      if (Math.abs(dy) > 6 && inHero){
-        if (dy > 0) env?.classList.add('open');
-        else        env?.classList.remove('open');
-      }
-    }, { passive:true });
-
-    /* Auto‑open estable */
-    window.addEventListener('load', () => {
-      setTimeout(()=>env?.classList.add('open'), 1600);
-    });
+    window.addEventListener('load', () => { setTimeout(()=>env?.classList.add('open'), 1600); });
 
     /* ===== Countdown ===== */
     const EVENT_DATE = new Date("2026-06-27T19:00:00-06:00").getTime();
@@ -481,36 +460,38 @@
       const hrs  = Math.floor(diff / 3600000);  diff -= hrs*3600000;
       const min  = Math.floor(diff / 60000);    diff -= min*60000;
       const sec  = Math.floor(diff / 1000);
-      if (dEl) dEl.textContent = days;
-      if (hEl) hEl.textContent = hrs;
-      if (mEl) mEl.textContent = min;
-      if (sEl) sEl.textContent = sec;
+      if (dEl) dEl.textContent = days; if (hEl) hEl.textContent = hrs;
+      if (mEl) mEl.textContent = min;  if (sEl) sEl.textContent = sec;
     }
     tick(); setInterval(tick, 1000);
 
-    /* ===== Audio mobile‑safe ===== */
+    /* ===== Audio mobile‑safe (solo si existe el MP3) ===== */
     function hideAudioBar(){ if(bar) bar.style.display = 'none'; }
-    function setUI(playing){
-      if (!bar || !btn) return;
-      if (playing){ bar.classList.remove('paused'); btn.textContent='Pause'; }
-      else         { bar.classList.add('paused');  btn.textContent='Play';  }
-    }
-    window.addEventListener('load', async () => {
-      try { if (audio){ audio.muted = true; await audio.play(); setUI(false); } }
-      catch { setUI(false); }
-    }, { once:true });
-    btn?.addEventListener('click', async () => {
-      if (!audio) return;
-      if (audio.paused){
-        try { audio.muted = false; await audio.play(); setUI(true); }
-        catch { audio.muted = true; await audio.play(); setUI(true); }
-      } else { audio.pause(); setUI(false); }
-    }, { passive:true });
-    audio?.addEventListener('error', hideAudioBar, { once:true });
+    function setUI(playing){ if (!bar || !btn) return; bar.classList.toggle('paused', !playing); btn.textContent = playing ? 'Pause' : 'Play'; }
+
+    (async function setupAudio(){
+      if (!audio){ hideAudioBar(); return; }
+      try{
+        const res = await fetchWithTimeout(v('assets/music.mp3'), 6000, { method:'HEAD' });
+        if (!res.ok) { hideAudioBar(); return; }
+        audio.src = v('assets/music.mp3');
+        window.addEventListener('load', async () => {
+          try { audio.muted = true; await audio.play(); setUI(false); } catch { setUI(false); }
+        }, { once:true });
+        btn?.addEventListener('click', async () => {
+          if (audio.paused){
+            try { audio.muted = false; await audio.play(); setUI(true); }
+            catch { audio.muted = true; await audio.play(); setUI(true); }
+          } else { audio.pause(); setUI(false); }
+        }, { passive:true });
+        audio.addEventListener('error', hideAudioBar, { once:true });
+      }catch{ hideAudioBar(); }
+    })();
 
     /* ===== Personalización por idInvitado (guests.json) ===== */
     const params = new URLSearchParams(location.search);
     const idInv = params.get('idInvitado') || '';
+
     function buildWAText(guest){
       const nombre = guest?.nombre || 'Invitado';
       const mesa   = guest?.mesa   || '—';
@@ -522,122 +503,81 @@
       if (!waBtn || !waText) return;
       const text = buildWAText(guest);
       const wa   = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
-      waBtn.href = wa;
-      waText.textContent = 'Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).';
+      waBtn.href = wa; waText.textContent = 'Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).';
     }
     function setQR(guest){
       if (!qrDiv || !qrLabel) return;
       const url = location.origin + location.pathname + (guest?.id ? ('?idInvitado='+encodeURIComponent(guest.id)) : '');
       const payload = `ACCESO|XV_JIMENA|${guest?.id||'GEN'}|${url}`;
-      const qr = new MiniQR(5);
-      qr.addData(payload);
-      qr.make();
-      qrDiv.innerHTML = qr.toSVG(4,2);
-      qrLabel.textContent = guest?.nombre ? `QR de: ${guest.nombre}` : 'Escanea tu QR al ingresar';
+      const qr = new MiniQR(5); qr.addData(payload); qr.make();
+      qrDiv.innerHTML = qr.toSVG(4,2); qrLabel.textContent = guest?.nombre ? `QR de: ${guest.nombre}` : 'Escanea tu QR al ingresar';
     }
     function setGuestUI(guest){
       if (guest){
         if (guestLine) guestLine.textContent = `${guest.nombre} • Mesa ${guest.mesa} • ${guest.boletos} boleto(s)`;
         if (nameInput)   nameInput.value   = guest.nombre;
         if (guestsInput) guestsInput.value = guest.boletos;
-      } else {
-        if (guestLine) guestLine.textContent = `Invitado especial`;
-      }
-      setWhatsApp(guest);
-      setQR(guest);
+      } else { if (guestLine) guestLine.textContent = `Invitado especial`; }
+      setWhatsApp(guest); setQR(guest);
     }
-    async function loadGuests(){
+    (async function loadGuests(){
       if (!idInv){ setGuestUI(null); return; }
       try{
-        const res = await fetchWithTimeout(v('assets/guests.json'), 8000, { cache: 'no-store' });
+        const res = await fetchWithTimeout(v('assets/guests.json'), 8000, { cache:'no-store' });
         if (!res.ok) throw new Error('no guests.json');
         const data = await res.json();
         const guest = (data?.invitados||[]).find(g => g.id === idInv);
         setGuestUI(guest || null);
       }catch{ setGuestUI(null); }
-    }
-    loadGuests();
+    })();
 
     /* ===== Sheets (contador global) ===== */
     async function rsvpApi(body) {
-      let res;
       try{
-        res = await fetchWithTimeout(RSVP_API, 8000, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain' },
+        const res = await fetchWithTimeout(RSVP_API, 8000, {
+          method: 'POST', headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ token: API_TOKEN, ...body })
         });
+        return await res.json();
       }catch{ return { ok:false }; }
-      try { return await res.json(); } catch { return { ok:false }; }
     }
-    async function loadGlobalCount() {
-      const r = await rsvpApi({ action: 'count' });
+    (async function loadGlobalCount(){
+      const r = await rsvpApi({ action:'count' });
       if (r?.ok && typeof r.total === 'number' && countEl) countEl.textContent = r.total;
-    }
-    loadGlobalCount();
+    })();
 
-    function submitRSVP(e){
+    document.getElementById('form-rsvp')?.addEventListener('submit', function(e){
       e.preventDefault();
       const name   = (nameInput && nameInput.value) || '';
       const phone  = (document.querySelector('input[name="phone"]') || {}).value || '';
       const boletos= Number((guestsInput && guestsInput.value) || 0);
       const note   = (document.querySelector('input[name="note"]') || {}).value || '';
-      rsvpApi({
-        action: 'confirm',
-        payload: { idInvitado: idInv || '', nombre: name, boletos, phone, note, source: 'github-pages' }
-      }).then(r => {
+      rsvpApi({ action:'confirm', payload:{ idInvitado:idInv||'', nombre:name, boletos, phone, note, source:'github-pages' } })
+      .then(r => {
         if (r?.ok && countEl) countEl.textContent = r.total;
-        const form = document.getElementById('form-rsvp');
-        const ok   = document.getElementById('rsvp-ok');
-        if (form) form.style.display='none';
-        if (ok)   ok.style.display='block';
-      }).catch(() => {
-        const form = document.getElementById('form-rsvp');
-        const ok   = document.getElementById('rsvp-ok');
-        if (form) form.style.display='none';
-        if (ok)   ok.style.display='block';
+        const form = document.getElementById('form-rsvp'); const ok = document.getElementById('rsvp-ok');
+        if (form) form.style.display='none'; if (ok) ok.style.display='block';
+      })
+      .catch(() => {
+        const form = document.getElementById('form-rsvp'); const ok = document.getElementById('rsvp-ok');
+        if (form) form.style.display='none'; if (ok) ok.style.display='block';
       });
       return false;
-    }
-    document.getElementById('form-rsvp')?.addEventListener('submit', submitRSVP);
-
-    /* ===== Lightbox ===== */
-    const thumbs = Array.from(document.querySelectorAll('.thumb'));
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
-    const lbClose = document.getElementById('lbClose');
-    let idx = 0;
-
-    function openLB(i){
-      idx = i;
-      const src = thumbs[idx]?.dataset?.src;
-      if (!src){ return; }
-      lbImg.src = v(src);
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden','false');
-    }
-    function closeLB(){
-      lb.classList.remove('open');
-      lb.setAttribute('aria-hidden','true');
-      lbImg.src = '';
-    }
-    function prev(){ openLB((idx-1+thumbs.length)%thumbs.length); }
-    function next(){ openLB((idx+1)%thumbs.length); }
-
-    thumbs.forEach((t,i)=>{
-      const img = t.querySelector('img');
-      if (img && img.getAttribute('src')) img.setAttribute('src', v(img.getAttribute('src')));
-      if (t.dataset && t.dataset.src)     t.dataset.src = v(t.dataset.src);
-      t.addEventListener('click',()=>openLB(i), { passive:true });
     });
+
+    /* ===== Lightbox (la galería está vacía mientras no subas fotos) ===== */
+    const thumbs = Array.from(document.querySelectorAll('.thumb'));
+    const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
+    const lbPrev = document.getElementById('lbPrev'), lbNext = document.getElementById('lbNext'), lbClose = document.getElementById('lbClose');
+    let idx = 0;
+    function openLB(i){ idx=i; const src=thumbs[idx]?.dataset?.src; if(!src)return; lbImg.src = v(src); lb.classList.add('open}
+    function next(){ openLB((idx+1)%thumbs.length); }
+    thumbs.forEach((t,i)=>{ const img=t.querySelector('img'); if(img&&img.getAttribute('src')) img.setAttribute('src', v(img.getAttribute('src'))); if(t.dataset&&t.dataset.src) t.dataset.src = v(t.dataset.src); t.addEventListener('click',()=>openLB(i), { passive:true }); });
     lbClose?.addEventListener('click', closeLB, { passive:true });
     lbPrev?.addEventListener('click', prev, { passive:true });
     lbNext?.addEventListener('click', next, { passive:true });
     lb?.addEventListener('click', (e)=>{ if (e.target===lb) closeLB(); }, { passive:true });
-    window.addEventListener('keydown', (e)=>{ if (!lb.classList.contains('open')) return;
-      if (e.key==='Escape') closeLB(); if (e.key==='ArrowLeft') prev(); if (e.key==='ArrowRight') next(); });
+    window.addEventListener('keydown', (e)=>{ if (!lb.classList.contains('open')) return; if (e.key==='Escape') closeLB(); if (e.key==='ArrowLeft') prev(); if (e.key==='ArrowRight') next(); });
   </script>
 </body>
 </html>
