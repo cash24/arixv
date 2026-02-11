@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,7 +35,7 @@
     }
     .hero__bg{
       position:absolute; inset:0; z-index:0;
-      background:url('assets/hero.jpg') center/cover no-repeat; /* opcional: si no existe, se ve el degradado */
+      background-size:cover; background-position:center;
       opacity:.16; filter:grayscale(8%) saturate(105%); transform:scale(1.05);
     }
 
@@ -138,37 +139,21 @@
     .stat{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid rgba(202,162,122,.22);border-radius:12px;padding:.7rem 1rem;box-shadow:var(--shadow);justify-content:center}
     .stat b{font-size:1.3rem;color:var(--vino-deep)}
 
-        
     /* ===== DEV FOOTER ===== */
     .dev-footer{
-      position: fixed; left: 0; right: 0; bottom: 0;
-      z-index: 99999;
-      display: flex; align-items: center; justify-content: center;
-      gap: .6rem;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 99999;
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
       padding: .5rem .9rem calc(.5rem + env(safe-area-inset-bottom));
-      background: rgba(0,0,0,.72);
-      color: #fff; font-size: .88rem;
-      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,.72); color: #fff; font-size: .88rem; backdrop-filter: blur(6px);
     }
     .dev-footer .chip{
       display:inline-block; padding:.15rem .5rem; border-radius:999px;
       background:#ffd166; color:#4b3d00; font-weight:700; font-size:.72rem; letter-spacing:.04em;
     }
     .dev-footer a{ color:#ffd166; text-decoration: underline; }
-    @media (max-width: 420px){
-      .dev-footer{ font-size: .84rem; }
-    }
-
+    @media (max-width: 420px){ .dev-footer{ font-size: .84rem; } }
   </style>
 </head>
-  
-<footer class="dev-footer" id="devFooter" aria-label="Información de versión (desarrollo)" hidden>
-  <span class="chip">DEV</span>
-  <span>Versión <strong id="appVersion">–</strong></span>
-  <span>·</span>
-  <span>Última actualización: <time id="buildTime">–</time></span>
-</footer>
-
 <body>
 
   <!-- HERO + SOBRE -->
@@ -206,7 +191,7 @@
         <p class="kv"><strong>Parroquia Santa María</strong></p>
         <p class="muted">5:30 PM · Av. Hidalgo 123, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir en Google Maps</a>
         </p>
       </div>
       <div class="card2">
@@ -214,7 +199,7 @@
         <p class="kv"><strong>Salón Arcadia</strong></p>
         <p class="muted">7:00 PM · Calz. del Bosque 456, Coyoacán, CDMX</p>
         <p class="center" style="margin-top:.6rem">
-          <a class="btn-outline" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn-outline" target="_blank" href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir en Google Maps</a>
         </p>
       </div>
     </div>
@@ -235,7 +220,7 @@
         <p class="lead" id="waText" style="margin:.6rem 0 1rem">
           Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).
         </p>
-        <p><a id="waBtn" class="btn" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp</a></p>
+        <p><a id="waBtn" class="btn" target="_blank" href="#">Confirmar por WhatsApp</a></p>
 
         <div style="margin-top:1rem" class="stat">
           <span>Confirmaciones registradas:</span> <b id="confirmCount">0</b>
@@ -261,25 +246,13 @@
     <p class="lead">Algunas imágenes para ir calentando motores.</p>
 
     <div class="gallery" id="gallery">
-      <!-- Si no subes imágenes, estos cuadros no rompen -->
-      <div class="thumb" data-src="assets/gallery/1.jpg">
-        <img src="assets/gallery/1.jpg" alt="Foto 1" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="thumb" data-src="assets/gallery/2.jpg">
-        <img src="assets/gallery/2.jpg" alt="Foto 2" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="thumb" data-src="assets/gallery/3.jpg">
-        <img src="assets/gallery/3.jpg" alt="Foto 3" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="thumb" data-src="assets/gallery/4.jpg">
-        <img src="assets/gallery/4.jpg" alt="Foto 4" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="thumb" data-src="assets/gallery/5.jpg">
-        <img src="assets/gallery/5.jpg" alt="Foto 5" loading="lazy" onerror="this.style.display='none'">
-      </div>
-      <div class="thumb" data-src="assets/gallery/6.jpg">
-        <img src="assets/gallery/6.jpg" alt="Foto 6" loading="lazy" onerror="this.style.display='none'">
-      </div>
+      <!-- Deja estas 6 si ya tienes imágenes. Si no, bórralas: no rompen -->
+      <div class="thumb" data-src="assets/gallery/1.jpg"><img alt="" src="assets/gallery/1.jpg"></div>
+      <div class="thumb" data-src="assets/gallery/2.jpg"><img alt="" src="assets/gallery/2.jpg"></div>
+      <div class="thumb" data-src="assets/gallery/3.jpg"><img alt="" src="assets/gallery/3.jpg"></div>
+      <div class="thumb" data-src="assets/gallery/4.jpg"><img alt="" src="assets/gallery/4.jpg"></div>
+      <div class="thumb" data-src="assets/gallery/5.jpg"><img alt="" src="assets/gallery/5.jpg"></div>
+      <div class="thumb" data-src="assets/gallery/6.jpg"><img alt="" src="assets/gallery/6.jpg"></div>
     </div>
 
     <!-- Lightbox overlay -->
@@ -353,7 +326,15 @@
     <span class="audio-bar__dot" aria-hidden="true"></span>
     <button class="audio-btn" id="toggleAudio" type="button">Play</button>
   </div>
-  <audio id="bgm" src="assets/music.mp3" preload="auto" autoplay muted loop></audio>
+  <audio id="bgm" preload="auto" loop></audio>
+
+  <!-- ===== DEV FOOTER (visible sólo en desarrollo) ===== -->
+  <footer class="dev-footer" id="devFooter" aria-label="Información de versión (desarrollo)" hidden>
+    <span class="chip">DEV</span>
+    <span>Versión <strong id="appVersion">–</strong></span>
+    <span>·</span>
+    <span>Última actualización: <time id="buildTime">–</time></span>
+  </footer>
 
   <!-- ===== Mini QR (versión reducida) ===== -->
   <script>
@@ -382,83 +363,78 @@
 })(window);
   </script>
 
-  <!-- ===== Lógica principal (conexión a Google Sheets + UI, mobile-safe) ===== -->
+  <!-- ===== Lógica principal: versionador, DEV footer, móvil, Sheets, invitados ===== -->
   <script>
-    
     /* ===== Versionador de assets ===== */
-    const ASSETS_VERSION = '2026-02-11-02';  // <-- cambia este valor en cada release
+    const ASSETS_VERSION = '2026-02-11-05';  // ⬅️ súbelo en cada release
     const v = (p) => `${p}${p.includes('?') ? '&' : '?'}v=${ASSETS_VERSION}`;
 
-    
     /* ===== Bandera para mostrar/ocultar el footer de DEV ===== */
-    const SHOW_DEV_FOOTER = true;      
+    const SHOW_DEV_FOOTER = true; // ⬅️ ponlo en false cuando salgas a prod
 
-    // ===== Config de API (Google Apps Script) =====
+    /* ===== Config de API (Google Apps Script) ===== */
     const RSVP_API  = 'https://script.google.com/macros/s/AKfycbx1a_S5LBTuIQoIkt6H9lGAyO_GP1gbtKGEkpwYnsoze6xrKb-HPHvnGIqKGjHfOhxeqw/exec';
     const API_TOKEN = 'xv_ariadna_2026_seguridad_9832';
-    // Tel. WhatsApp (MX en formato internacional)
-    const WA_PHONE = '525625408998';
+    const WA_PHONE  = '525625408998';
 
-    
-    /* ===== Hero y audio con versión (cache busting) ===== */
-    const heroBg = document.querySelector('.hero__bg');
-    if (heroBg) heroBg.style.backgroundImage = `url('${v('assets/hero.jpg')}')`;
-    const audio = document.getElementById('bgm');
-    if (audio) audio.src = v('assets/music.mp3');
-  
-    /* ===== Footer de versión (se muestra sólo en DEV) ===== */
-    (function showDevFooter(){
-      try{
-        if (!SHOW_DEV_FOOTER) return;
-        const el = document.getElementById('devFooter');
-        const ver = document.getElementById('appVersion');
-        const time = document.getElementById('buildTime');
-  
-        if (!el || !ver || !time) return;
-  
-        // Fecha/hora legible (zona MX) — ajusta si prefieres otro formato
-        const fmt = new Intl.DateTimeFormat('es-MX', {
-          dateStyle:'medium', timeStyle:'short'
-        });
-        const now = fmt.format(new Date());
-  
-        ver.textContent = ASSETS_VERSION;
-        time.textContent = now;
-  
-        el.hidden = false;  // ¡mostrar!
-      }catch(e){/* noop */}
-    })();
-
-
-    // ===== Helpers: fetch con timeout (evita cuelgues en móvil) =====
+    /* ===== Helper: fetch con timeout ===== */
     async function fetchWithTimeout(url, ms = 8000, options = {}){
       const controller = new AbortController();
       const t = setTimeout(()=>controller.abort(), ms);
       try{
         const res = await fetch(url, { ...options, signal: controller.signal });
         return res;
-      } finally {
-        clearTimeout(t);
-      }
+      } finally { clearTimeout(t); }
     }
 
-    // ===== Sobre: auto + por scroll =====
-    const env = document.getElementById('envelope');
-    const openByScroll = () => {
+    /* ===== Elementos que usaremos varias veces ===== */
+    const heroBg     = document.querySelector('.hero__bg');
+    const env        = document.getElementById('envelope');
+    const audio      = document.getElementById('bgm');
+    const bar        = document.getElementById('audioBar');
+    const btn        = document.getElementById('toggleAudio');
+    const guestLine  = document.getElementById('guestLine');
+    const nameInput  = document.getElementById('nameInput');
+    const guestsInput= document.getElementById('guestsInput');
+    const waBtn      = document.getElementById('waBtn');
+    const waText     = document.getElementById('waText');
+    const qrDiv      = document.getElementById('qrcode');
+    const qrLabel    = document.getElementById('qrLabel');
+    const countEl    = document.getElementById('confirmCount');
+    const devFooter  = document.getElementById('devFooter');
+    const appVersion = document.getElementById('appVersion');
+    const buildTime  = document.getElementById('buildTime');
+
+    /* ===== Pintar recursos con versión (hero + audio) ===== */
+    if (heroBg) heroBg.style.backgroundImage = `url('${v('assets/hero.jpg')}')`;
+    if (audio)  audio.src = v('assets/music.mp3');
+
+    /* ===== Footer DEV: poblar cuando el DOM ya existe ===== */
+    window.addEventListener('DOMContentLoaded', () => {
+      try{
+        if (!SHOW_DEV_FOOTER) return;
+        if (appVersion) appVersion.textContent = ASSETS_VERSION;
+        if (buildTime)  buildTime.textContent  = new Intl.DateTimeFormat('es-MX',{dateStyle:'medium',timeStyle:'short'}).format(new Date());
+        if (devFooter)  devFooter.hidden = false;
+      }catch{}
+    });
+
+    /* ===== Sobre: auto + por scroll ===== */
+    function openByScroll(){
       const rect = env.getBoundingClientRect();
       const vh = window.innerHeight || 0;
       if (rect.bottom < vh * 0.72) {
         env.classList.add('open');
         window.removeEventListener('scroll', openByScroll);
       }
-    };
-    window.addEventListener('scroll', openByScroll, {passive:true});
+    }
+    window.addEventListener('scroll', openByScroll, { passive:true });
     window.addEventListener('load', () => {
       setTimeout(()=>env.classList.add('open'), 1600); // más estable en móviles
       openByScroll();
     });
 
-    // ===== Countdown =====
+    /* ===== Countdown ===== */
     const EVENT_DATE = new Date("2026-06-27T19:00:00-06:00").getTime();
     const dEl = document.getElementById('d'), hEl = document.getElementById('h'),
           mEl = document.getElementById('m'), sEl = document.getElementById('s');
@@ -469,53 +445,41 @@
       const hrs  = Math.floor(diff / 3600000); diff -= hrs*3600000;
       const min  = Math.floor(diff / 60000);   diff -= min*60000;
       const sec  = Math.floor(diff / 1000);
-      dEl.textContent = days; hEl.textContent = hrs; mEl.textContent = min; sEl.textContent = sec;
+      if (dEl) dEl.textContent = days;
+      if (hEl) hEl.textContent = hrs;
+      if (mEl) mEl.textContent = min;
+      if (sEl) sEl.textContent = sec;
     }
     tick(); setInterval(tick, 1000);
 
-    // ===== Audio mobile‑safe (autoplay muted; desmute sólo por gesto) =====
-    const audio = document.getElementById('bgm');
-    const bar   = document.getElementById('audioBar');
-    const btn   = document.getElementById('toggleAudio');
+    /* ===== Audio mobile‑safe (autoplay muted; desmute sólo por gesto) ===== */
     function hideAudioBar(){ if(bar) bar.style.display = 'none'; }
     function setUI(playing){
       if (!bar || !btn) return;
       if (playing){ bar.classList.remove('paused'); btn.textContent='Pause'; }
       else         { bar.classList.add('paused');  btn.textContent='Play';  }
     }
-    // Reproduce MUTED en load (permitido en móvil); no intentamos desmutear en automático
     window.addEventListener('load', async () => {
-      try {
+      try{
         if (audio) {
           audio.muted = true;
-          await audio.play();   // should work on mobile
-          setUI(false);         // sigue en mute hasta gesto
+          await audio.play();  // permitido en móvil (muted)
+          setUI(false);
         }
-      } catch { setUI(false); }
+      }catch{ setUI(false); }
     }, { once:true });
-
-    // Botón: primer toque intenta desmutear; si falla, reproduce en mute
     btn?.addEventListener('click', async () => {
       if (!audio) return;
       if (audio.paused){
         try { audio.muted = false; await audio.play(); setUI(true); }
         catch { audio.muted = true; await audio.play(); setUI(true); }
-      } else {
-        audio.pause(); setUI(false);
-      }
+      } else { audio.pause(); setUI(false); }
     }, { passive:true });
+    audio?.addEventListener('error', hideAudioBar, { once:true });
 
-    // ===== Personalización por idInvitado + guests.json =====
+    /* ===== Personalización por idInvitado + guests.json ===== */
     const params = new URLSearchParams(location.search);
     const idInv = params.get('idInvitado') || '';
-    const guestLine = document.getElementById('guestLine');
-    const nameInput = document.getElementById('nameInput');
-    const guestsInput = document.getElementById('guestsInput');
-    const waBtn = document.getElementById('waBtn');
-    const waText = document.getElementById('waText');
-    const qrDiv = document.getElementById('qrcode');
-    const qrLabel = document.getElementById('qrLabel');
-
     function buildWAText(guest){
       const nombre = guest?.nombre || 'Invitado';
       const mesa   = guest?.mesa   || '—';
@@ -554,7 +518,7 @@
     async function loadGuests(){
       if (!idInv){ setGuestUI(null); return; }
       try{
-        const res = await fetchWithTimeout('assets/guests.json', 8000, { cache: 'no-store' });
+        const res = await fetchWithTimeout(v('assets/guests.json'), 8000, { cache: 'no-store' });
         if (!res.ok) throw new Error('no guests.json');
         const data = await res.json();
         const guest = (data?.invitados||[]).find(g => g.id === idInv);
@@ -563,7 +527,7 @@
     }
     loadGuests();
 
-    // ===== API helper (Apps Script) – POST text/plain para evitar preflight =====
+    /* ===== API helper (Apps Script) – POST text/plain para evitar preflight ===== */
     async function rsvpApi(body) {
       let res;
       try{
@@ -576,17 +540,14 @@
       try { return await res.json(); } catch { return { ok:false }; }
     }
 
-    // ===== Contador global (lee total al cargar) =====
-    const countEl = document.getElementById('confirmCount');
+    /* ===== Contador global ===== */
     async function loadGlobalCount() {
       const r = await rsvpApi({ action: 'count' });
-      if (r?.ok && typeof r.total === 'number' && countEl) {
-        countEl.textContent = r.total;
-      }
+      if (r?.ok && typeof r.total === 'number' && countEl) countEl.textContent = r.total;
     }
     loadGlobalCount();
 
-    // ===== RSVP (envío + guarda en la hoja y actualiza total) =====
+    /* ===== RSVP ===== */
     function submitRSVP(e){
       e.preventDefault();
       const name   = (nameInput && nameInput.value) || '';
@@ -613,7 +574,7 @@
     }
     document.getElementById('form-rsvp')?.addEventListener('submit', submitRSVP);
 
-    // ===== Lightbox =====
+    /* ===== Lightbox ===== */
     const thumbs = Array.from(document.querySelectorAll('.thumb'));
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
@@ -626,7 +587,7 @@
       idx = i;
       const src = thumbs[idx]?.dataset?.src;
       if (!src){ return; }
-      lbImg.src = src;
+      lbImg.src = v(src);
       lb.classList.add('open');
       lb.setAttribute('aria-hidden','false');
     }
@@ -638,17 +599,18 @@
     function prev(){ openLB((idx-1+thumbs.length)%thumbs.length); }
     function next(){ openLB((idx+1)%thumbs.length); }
 
-    thumbs.forEach((t,i)=>t.addEventListener('click',()=>openLB(i), { passive:true }));
+    thumbs.forEach((t,i)=>{
+      // versionar thumbnails
+      const img = t.querySelector('img');
+      if (img && img.getAttribute('src')) img.setAttribute('src', v(img.getAttribute('src')));
+      if (t.dataset && t.dataset.src) t.dataset.src = v(t.dataset.src);
+      t.addEventListener('click',()=>openLB(i), { passive:true });
+    });
     lbClose?.addEventListener('click', closeLB, { passive:true });
     lbPrev?.addEventListener('click', prev, { passive:true });
     lbNext?.addEventListener('click', next, { passive:true });
     lb?.addEventListener('click', (e)=>{ if (e.target===lb) closeLB(); }, { passive:true });
-    window.addEventListener('keydown', (e)=>{
-      if (!lb.classList.contains('open')) return;
-      if (e.key==='Escape') closeLB();
-      if (e.key==='ArrowLeft') prev();
-      if (e.key==='ArrowRight') next();
-    });
+
   </script>
 </body>
 </html>
