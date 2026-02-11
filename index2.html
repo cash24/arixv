@@ -354,6 +354,11 @@
 
   <!-- ===== Lógica principal (conexión a Google Sheets + UI, mobile-safe) ===== -->
   <script>
+    
+    /* ===== Versionador de assets ===== */
+    const ASSETS_VERSION = '2026-02-11-01';  // <-- cambia este valor en cada release
+    const v = (p) => `${p}${p.includes('?') ? '&' : '?'}v=${ASSETS_VERSION}`;
+
     // ===== Config de API (Google Apps Script) =====
     const RSVP_API  = 'https://script.google.com/macros/s/AKfycbx1a_S5LBTuIQoIkt6H9lGAyO_GP1gbtKGEkpwYnsoze6xrKb-HPHvnGIqKGjHfOhxeqw/exec';
     const API_TOKEN = 'xv_ariadna_2026_seguridad_9832';
