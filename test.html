@@ -5,235 +5,293 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XV • Jessica Ariadna</title>
+    <!-- Google Fonts: Cinzel (headers), Cormorant Garamond (body), MedievalSharp (accents) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=MedievalSharp&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/test.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="intro" style="background-image: url('assets/hero.png')">
-            <h2>Mis XV Jessica Ariadna</h2>
 
-        </div>
-        <main>
-            <div class="content" style="background-image: url('assets/hero.png')">
-
-
-                <!-- HERO + SOBRE from index2.html -->
-                <header class="hero" id="inicio">
-                    <div class="hero__bg" aria-hidden="true"></div>
-                    <div class="envelope" id="envelope">
-                        <div class="envelope__body">
-                            <div class="paper" aria-hidden="true"></div>
-
-                            <!-- NUEVAS TAPAS -->
-                            <div class="flap-top" aria-hidden="true"></div>
-                            <div class="flap-bottom" aria-hidden="true"></div>
-
-                            <div class="lip" aria-hidden="true"></div>
-                            <div class="seal" title="Quince Años"></div>
-
-                            <div class="card">
-                                <div class="card__inner">
-                                    <span class="card__badge">Quince Años</span>
-                                    <h1 class="card__title gold-gradient gold-outline">Jessica Ariadna</h1>
-                                    <p class="card__subtitle">Sábado 25 de abril, 2026 · 6:00 PM (Misa) · 7:30 PM
-                                        (Recepción)</p>
-                                    <p id="guestLine" class="card__guest">Invitado especial</p>
-                                    <p style="margin-top:1rem">
-                                        <a href="#detalles" class="btn-outline">Ver detalles →</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-
-                <!-- DETALLES -->
-                <section class="section" id="detalles">
-                    <h2>Detalles del evento</h2>
-                    <p class="lead">Acompáñanos a celebrar los XV años de <strong>Jessica Ariadna</strong>. Aquí
-                        tienes la
-                        información de la ceremonia y la recepción.</p>
-
-                    <div class="grid two" style="margin-top:1rem">
-                        <div class="card2">
-                            <span class="chip">Ceremonia</span>
-                            <p class="kv"><strong>Parroquia Santa María</strong></p>
-                            <p class="muted"><strong>6:00 PM</strong> · Av. Hidalgo 123, Coyoacán, CDMX</p>
-                            <p class="center" style="margin-top:.6rem">
-                                <a class="btn-outline" target="_blank" rel="noopener"
-                                    href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir
-                                    en Google Maps</a>
-                            </p>
-                        </div>
-                        <div class="card2">
-                            <span class="chip">Recepción</span>
-                            <p class="kv"><strong>Salón Arcadia</strong></p>
-                            <p class="muted"><strong>7:30 PM</strong> · Calz. del Bosque 456, Coyoacán, CDMX</p>
-                            <p class="center" style="margin-top:.6rem">
-                                <a class="btn-outline" target="_blank" rel="noopener"
-                                    href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir
-                                    en Google Maps</a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="grid two" style="margin-top:1rem">
-                        <!-- QR de acceso -->
-                        <div class="card2">
-                            <span class="chip">Acceso con QR</span>
-                            <div class="qr-box" style="margin-top:.6rem">
-                                <div id="qrcode" aria-label="Código QR de acceso"></div>
-                                <div id="qrLabel" class="qr-name">Escanea tu QR al ingresar</div>
-                            </div>
-                        </div>
-
-                        <!-- WhatsApp Confirmación -->
-                        <div class="card2 center">
-                            <span class="chip">Confirmación</span>
-                            <p class="lead" id="waText" style="margin:.6rem 0 1rem">
-                                Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).
-                            </p>
-                            <p><a id="waBtn" class="btn" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
-                            </p>
-
-                            <div style="margin-top:1rem" class="stat">
-                                <span>Confirmaciones registradas:</span> <b id="confirmCount">0</b>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CUENTA REGRESIVA -->
-                <section class="section" id="cuenta">
-                    <h2>¡Faltan…!</h2>
-                    <div id="countdown" class="countdown">
-                        <div class="count"><b id="d">--</b><span>Días</span></div>
-                        <div class="count"><b id="h">--</b><span>Horas</span></div>
-                        <div class="count"><b id="m">--</b><span>Min</span></div>
-                        <div class="count"><b id="s">--</b><span>Seg</span></div>
-                    </div>
-                </section>
-
-                <!-- GALERÍA (LIGHTBOX) -->
-                <section class="section" id="galeria">
-                    <h2>Sesión de fotos</h2>
-                    <p class="lead">Sube tus fotos a <code>assets/gallery/</code> y aparecerán aquí.</p>
-
-                    <div class="gallery" id="gallery"><!-- vacío mientras no haya imágenes --></div>
-
-                    <!-- Lightbox overlay -->
-                    <div class="lightbox" id="lightbox" aria-hidden="true">
-                        <img id="lbImg" class="lightbox__img" alt="Imagen ampliada">
-                        <button class="lb-btn" id="lbPrev" aria-label="Anterior">‹</button>
-                        <button class="lb-btn" id="lbNext" aria-label="Siguiente">›</button>
-                        <button class="lb-btn" id="lbClose" aria-label="Cerrar">✕</button>
-                    </div>
-                </section>
-
-                <!-- LLUVIA DE SOBRES -->
-                <section class="section" id="regalos">
-                    <h2>Lluvia de sobres</h2>
-                    <p class="note">
-                        Tu presencia es nuestro mejor regalo. Si gustas, sugerimos <strong>lluvia de
-                            sobres</strong>.
-                    </p>
-                </section>
-
-                <!-- RSVP -->
-                <section class="section" id="rsvp">
-                    <h2>Confirma tu asistencia</h2>
-                    <p class="lead">También puedes enviarnos tu confirmación con este formulario.</p>
-                    <div class="card2">
-                        <form id="form-rsvp" class="grid two">
-                            <div>
-                                <label>Nombre completo<br />
-                                    <input name="name" id="nameInput" required
-                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
-                                </label>
-                            </div>
-                            <div>
-                                <label>WhatsApp<br />
-                                    <input name="phone" required
-                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
-                                </label>
-                            </div>
-                            <div>
-                                <label>Asistentes<br />
-                                    <input type="number" min="1" max="8" value="1" name="guests" id="guestsInput"
-                                        required
-                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
-                                </label>
-                            </div>
-                            <div>
-                                <label>Mensaje<br />
-                                    <input name="note" placeholder="Alergias, peticiones, etc."
-                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
-                                </label>
-                            </div>
-                            <div class="center" style="grid-column:1/-1">
-                                <button class="btn" type="submit">Enviar confirmación</button>
-                            </div>
-                        </form>
-                        <p id="rsvp-ok" class="center"
-                            style="display:none;margin-top:1rem;color:var(--vino-deep);font-weight:700">
-                            ¡Gracias! Hemos recibido tu confirmación.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- AGRADECIMIENTOS -->
-                <section class="section" id="agradecimientos">
-                    <h2>Agradecimientos</h2>
-                    <p class="lead">
-                        Con profundo cariño agradecemos a nuestra familia y amigos por acompañarnos en este día tan
-                        especial.
-                        Su presencia y buenos deseos hacen inolvidable esta celebración.
-                    </p>
-                    <p class="muted">— Familia Hernández</p>
-                </section>
-
-                <!-- Audio bar + audio local -->
-                <div class="audio-bar paused" id="audioBar" title="Música">
-                    <span class="audio-bar__dot" aria-hidden="true"></span>
-                    <button class="audio-btn" id="toggleAudio" type="button">Play</button>
-                </div>
-                <audio id="bgm" preload="auto" loop src="assets/music.mp3"></audio>
-
-                <script>
-                    const audio = document.getElementById('bgm');
-                    const bar = document.getElementById('audioBar');
-                    const btn = document.getElementById('toggleAudio');
-
-                    function setUI(playing) {
-                        if (!bar || !btn) return;
-                        bar.classList.toggle('paused', !playing);
-                        btn.textContent = playing ? 'Pause' : 'Play';
-                    }
-
-                    if (audio && btn) {
-                        btn.addEventListener('click', async () => {
-                            if (audio.paused) {
-                                try {
-                                    audio.muted = false;
-                                    await audio.play();
-                                    setUI(true);
-                                } catch (err) {
-                                    console.warn('Playback failed:', err);
-                                    setUI(false);
-                                }
-                            } else {
-                                audio.pause();
-                                setUI(false);
-                            }
-                        });
-                    }
-                </script>
-
-
+    <!-- PORTADA / HERO -->
+    <section class="cover" id="start">
+        <div class="cover__bg"></div>
+        <div class="cover__content">
+            <h2 class="animate-fade-up">Mis XV</h2>
+            <h1 class="animate-fade-up delay-1">Jessica Ariadna</h1>
+            <p class="animate-fade-up delay-2">Te invito a vivir este sueño conmigo</p>
+            <div class="scroll-indicator animate-bounce delay-3">
+                <span>&#8595;</span>
             </div>
-        </main>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- SOBRE / INVITACIÓN -->
+        <section class="envelope-section">
+            <div class="envelope" id="envelope">
+                <div class="envelope__body">
+                    <div class="paper" aria-hidden="true"></div>
+                    <div class="flap-top" aria-hidden="true"></div>
+                    <div class="flap-bottom" aria-hidden="true"></div>
+                    <div class="lip" aria-hidden="true"></div>
+                    <div class="seal" title="Quince Años"></div>
+
+                    <div class="card">
+                        <div class="card__inner">
+                            <span class="card__badge">15 Años</span>
+                            <h2 class="card__title gold-gradient">Jessica Ariadna</h2>
+                            <p class="card__subtitle">Sábado 25 de abril, 2026</p>
+                            <div class="card__divider"></div>
+                            <p id="guestLine" class="card__guest">Invitado Especial</p>
+                            <a href="#detalles" class="btn btn--outline mt-4">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETALLES -->
+        <section class="section" id="detalles">
+            <h2 class="section-title">Detalles del Evento</h2>
+            <p class="lead">Acompáñanos en esta celebración llena de magia y alegría.</p>
+
+            <div class="grid two mt-6">
+                <article class="info-card">
+                    <span class="chip">Ceremonia</span>
+                    <h3>Parroquia Santa María</h3>
+                    <p class="time">6:00 PM</p>
+                    <p class="address">Av. Hidalgo 123, Coyoacán, CDMX</p>
+                    <a href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123"
+                        target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
+                </article>
+
+                <article class="info-card">
+                    <span class="chip">Recepción</span>
+                    <h3>Salón Arcadia</h3>
+                    <p class="time">7:30 PM</p>
+                    <p class="address">Calz. del Bosque 456, Coyoacán, CDMX</p>
+                    <a href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456"
+                        target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
+                </article>
+            </div>
+
+            <!-- GALERÍA -->
+            <div class="mt-8">
+                <h2 class="section-title">Galería</h2>
+                <div class="gallery" id="gallery">
+                    <!-- Placeholder images using colors/gradients compatible with theme -->
+                    <div class="thumb" data-src="assets/4931590593436126264.jpg"><img
+                            src="assets/4931590593436126264.jpg" alt="Foto 1" loading="lazy"></div>
+                    <div class="thumb" data-src="assets/4931590593436126265.jpg"><img
+                            src="assets/4931590593436126265.jpg" alt="Foto 2" loading="lazy"></div>
+                    <div class="thumb" data-src="assets/4931590593436126266.jpg"><img
+                            src="assets/4931590593436126266.jpg" alt="Foto 3" loading="lazy"></div>
+                </div>
+            </div>
+
+            <!-- ACCESS & RSVP -->
+            <div class="grid two mt-8">
+                <div class="info-card">
+                    <span class="chip">Acceso</span>
+                    <div class="qr-container">
+                        <div id="qrcode"></div>
+                        <p id="qrLabel" class="text-sm mt-2">Tu código de acceso</p>
+                    </div>
+                </div>
+
+                <div class="info-card center-content">
+                    <span class="chip">Confirmación</span>
+                    <p class="mb-4">Confirma tu asistencia fácilmente por WhatsApp.</p>
+                    <a id="waBtn" class="btn btn--whatsapp" target="_blank" rel="noopener">Confirmar</a>
+                    <div class="stat mt-4">
+                        <span>Asistentes confirmados:</span>
+                        <strong id="confirmCount">0</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CUENTA REGRESIVA -->
+        <section class="section text-center" id="cuenta">
+            <h2 class="section-title">Faltan</h2>
+            <div id="countdown" class="countdown">
+                <div class="count-box"><span id="d">00</span><label>Días</label></div>
+                <div class="count-box"><span id="h">00</span><label>Hrs</label></div>
+                <div class="count-box"><span id="m">00</span><label>Min</label></div>
+                <div class="count-box"><span id="s">00</span><label>Seg</label></div>
+            </div>
+        </section>
+
+        <!-- REGALOS -->
+        <section class="section text-center" id="regalos">
+            <h2 class="section-title">Regalos</h2>
+            <div class="gift-box">
+                <p>Tu presencia es mi mejor regalo.</p>
+                <p class="text-sm">Pero si deseas tener un detalle conmigo, habrá lluvia de sobres.</p>
+            </div>
+        </section>
+
+        <!-- AGRADECIMIENTOS -->
+        <section class="section text-center pb-12" id="agradecimientos">
+            <h2 class="font-medieval text-xl mb-4">Agradecimientos</h2>
+            <p class="italic">"Gracias por ser parte de este día tan especial y acompañarme en el inicio de esta nueva
+                etapa."</p>
+            <p class="mt-4 font-bold text-wine">— Familia Hernández</p>
+        </section>
+
+    </main>
+
+    <!-- UI COMPONENTS -->
+    <div class="audio-control paused" id="audioBar" title="Música">
+        <div class="equalizer">
+            <span></span><span></span><span></span>
+        </div>
+        <button id="toggleAudio">Play</button>
     </div>
+    <audio id="bgm" loop src="assets/music.mp3"></audio>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <img id="lbImg" src="" alt="Zoom">
+        <button class="lb-close" id="lbClose">&times;</button>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- QR Code Logic (MiniQR) ---
+        (function (w) { function QR8bitByte(d) { this.mode = 4; this.data = d; } QR8bitByte.prototype = { getLength: function () { return this.data.length }, write: function (b) { for (var i = 0; i < this.data.length; i++)b.put(this.data.charCodeAt(i), 8) } }; function QRBitBuffer() { this.buffer = []; this.length = 0; } QRBitBuffer.prototype = { get: function (i) { return ((this.buffer[Math.floor(i / 8)] >>> (7 - i % 8)) & 1) == 1 }, put: function (num, l) { for (var i = 0; i < l; i++)this.putBit(((num >>> (l - i - 1)) & 1) == 1) }, putBit: function (bit) { this.buffer[Math.floor(this.length / 8)] |= (bit ? 1 : 0) << (7 - this.length % 8); this.length++ } }; var QRRSBlock = { getRSBlocks: function (typeNumber) { return typeNumber <= 5 ? [{ dataCount: 20 }, { dataCount: 20 }] : [{ dataCount: 34 }, { dataCount: 34 }] } }; function QRCode(typeNumber) { this.typeNumber = typeNumber; this.modules = null; this.moduleCount = 0; this.dataList = []; } QRCode.prototype = { addData: function (d) { this.dataList.push(new QR8bitByte(d)) }, make: function () { var rs = QRRSBlock.getRSBlocks(this.typeNumber), buf = new QRBitBuffer(); for (var i = 0; i < this.dataList.length; i++) { var d = this.dataList[i]; buf.put(4, 4); buf.put(d.getLength(), 8); d.write(buf); } buf.put(0, 4); while (buf.length % 8 != 0) buf.putBit(false); var total = 0; for (i = 0; i < rs.length; i++)total += rs[i].dataCount; var bytes = []; for (i = 0; i < total; i++)bytes[i] = 0; for (i = 0; i < buf.length; i++)bytes[i >> 3] |= ((buf.buffer[i >> 3] >>> (7 - i % 8)) & 1) << (7 - i % 8); this.moduleCount = (this.typeNumber - 1) * 4 + 21; this.modules = Array.from({ length: this.moduleCount }, () => Array(this.moduleCount).fill(null)); function finder(qr, r, c) { for (var y = -1; y <= 7; y++)for (var x = -1; x <= 7; x++) { var rr = r + y, cc = c + x; if (rr < 0 || rr >= qr.moduleCount || cc < 0 || cc >= qr.moduleCount) continue; var v = ((y >= 0 && y <= 6 && (x == 0 || x == 6)) || (x >= 0 && x <= 6 && (y == 0 || y == 6)) || (y >= 2 && y <= 4 && x >= 2 && x <= 4)); qr.modules[rr][cc] = v } } finder(this, 0, 0); finder(this, 0, this.moduleCount - 7); finder(this, this.moduleCount - 7, 0); for (i = 8; i < this.moduleCount - 8; i++) { var v = i % 2 == 0; if (this.modules[6][i] === null) this.modules[6][i] = v; if (this.modules[i][6] === null) this.modules[i][6] = v; } var inc = -1, row = this.moduleCount - 1, bit = 0, byt = 0; for (var col = this.moduleCount - 1; col > 0; col -= 2) { if (col == 6) col--; while (true) { for (var c = 0; c < 2; c++) { var cc = col - c; if (this.modules[row][cc] === null) { var dark = false; if (byt < bytes.length) { dark = ((bytes[byt] >>> (7 - bit)) & 1) == 1; bit++; if (bit == 8) { bit = 0; byt++; } } this.modules[row][cc] = dark; } } row += inc; if (row < 0 || row >= this.moduleCount) { row -= inc; inc = -inc; break; } } } }, toSVG: function (sz) { var c = this.moduleCount, s = c * sz, svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + s + ' ' + s + '" width="100%" height="100%" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/>'; for (var r = 0; r < c; r++)for (var k = 0; k < c; k++)if (this.modules[r][k]) svg += '<rect x="' + (k * sz) + '" y="' + (r * sz) + '" width="' + sz + '" height="' + sz + '" fill="#54131f"/>'; svg += '</svg>'; return svg; } }; w.MiniQR = QRCode; })(window);
+
+        // --- Utils ---
+        const $ = (s) => document.querySelector(s);
+        const $$ = (s) => document.querySelectorAll(s);
+
+        // --- Audio Logic ---
+        const audio = $('#bgm');
+        const audioBar = $('#audioBar');
+        const toggleBtn = $('#toggleAudio');
+        let isPlaying = false;
+
+        function updateAudioUI() {
+            if (isPlaying) {
+                audioBar.classList.remove('paused');
+                toggleBtn.textContent = "Pause";
+            } else {
+                audioBar.classList.add('paused');
+                toggleBtn.textContent = "Play";
+            }
+        }
+
+        if (audio && toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().then(() => { isPlaying = true; updateAudioUI(); })
+                        .catch(e => console.log("Audio play failed", e));
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                    updateAudioUI();
+                }
+            });
+        }
+
+        // --- Countdown ---
+        const EVENT_DATE = new Date("2026-04-25T19:30:00-06:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = EVENT_DATE - now;
+
+            if (distance < 0) {
+                $('#countdown').innerHTML = "¡Es hoy!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            $('#d').innerText = days.toString().padStart(2, '0');
+            $('#h').innerText = hours.toString().padStart(2, '0');
+            $('#m').innerText = minutes.toString().padStart(2, '0');
+            $('#s').innerText = seconds.toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- Guest / QR Logic ---
+        const params = new URLSearchParams(location.search);
+        const guestId = params.get('idInvitado');
+
+        async function loadGuestInfo() {
+            // Default generic info
+            let guest = { nombre: "Invitado Especial", boletos: 1, id: "GENERIC" };
+
+            if (guestId) {
+                try {
+                    const res = await fetch('assets/guests.json');
+                    if (res.ok) {
+                        const data = await res.json();
+                        const found = data.invitados.find(g => g.id === guestId);
+                        if (found) guest = found;
+                    }
+                } catch (e) { console.error(e); }
+            }
+
+            $('#guestLine').textContent = guest.nombre;
+
+            // Build Whatsapp Link
+            const waPhone = '525625408998';
+            const msg = `Hola, soy ${guest.nombre}. Confirmo mi asistencia a los XV.`;
+            $('#waBtn').href = `https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`;
+
+            // Generate QR
+            const qr = new MiniQR(4);
+            qr.addData(`XV-ACCESS|${guest.id}`);
+            qr.make();
+            $('#qrcode').innerHTML = qr.toSVG(5);
+        }
+        loadGuestInfo();
+
+        // --- Lightbox ---
+        const lightbox = $('#lightbox');
+        const lbImg = $('#lbImg');
+
+        $$('.thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const src = thumb.dataset.src;
+                if (src) {
+                    lbImg.src = src;
+                    lightbox.classList.add('visible');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                }
+            });
+        });
+
+        $('#lbClose').addEventListener('click', () => {
+            lightbox.classList.remove('visible');
+            lightbox.setAttribute('aria-hidden', 'true');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('visible');
+            }
+        });
+
+        // --- Envelope Animation on Scroll ---
+        const envelope = $('#envelope');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                envelope.classList.add('open');
+            } else {
+                envelope.classList.remove('open');
+            }
+        });
+
+    </script>
 </body>
 
 </html>
