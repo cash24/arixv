@@ -18,9 +18,9 @@
     <section class="cover" id="start">
         <div class="cover__bg"></div>
         <div class="cover__content">
-            <h2 class="animate-fade-up">Mis XV</h2>
-            <h1 class="animate-fade-up delay-1">Jessica Ariadna</h1>
-            <p class="animate-fade-up delay-2">Te invito a vivir este sueño conmigo</p>
+            <h2 class="animate-fade-up glow-gold">Mis XV</h2>
+            <h1 class="animate-fade-up delay-1 glow-white">Jessica Ariadna</h1>
+            <p class="animate-fade-up delay-2 glow-gold">Te invito a vivir este sueño conmigo</p>
             <div class="scroll-indicator animate-bounce delay-3">
                 <span>&#8595;</span>
             </div>
@@ -42,8 +42,8 @@
 
                     <div class="card">
                         <div class="card__inner">
-                            <span class="card__badge">15 Años</span>
-                            <h2 class="card__title gold-gradient">Jessica Ariadna</h2>
+                            <span class="card__badge">Mis XV Años</span>
+                            <h2 class="card__title gold-gradient glow-white">Jessica Ariadna</h2>
                             <p class="card__subtitle">Sábado 25 de abril, 2026</p>
                             <div class="card__divider"></div>
                             <p id="guestLine" class="card__guest">Invitado Especial</p>
@@ -66,7 +66,14 @@
                     <p class="time">6:00 PM</p>
                     <p class="address">Av. Hidalgo 123, Coyoacán, CDMX</p>
                     <a href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123"
-                        target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
+                        target="_blank" rel="noopener" class="btn btn--small">
+                        <svg style="width:16px;vertical-align:middle;margin-right:4px" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Ver Mapa
+                    </a>
                 </article>
 
                 <article class="info-card">
@@ -75,7 +82,14 @@
                     <p class="time">7:30 PM</p>
                     <p class="address">Calz. del Bosque 456, Coyoacán, CDMX</p>
                     <a href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456"
-                        target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
+                        target="_blank" rel="noopener" class="btn btn--small">
+                        <svg style="width:16px;vertical-align:middle;margin-right:4px" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Ver Mapa
+                    </a>
                 </article>
             </div>
 
@@ -118,11 +132,13 @@
         <!-- CUENTA REGRESIVA -->
         <section class="section text-center" id="cuenta">
             <h2 class="section-title">Faltan</h2>
-            <div id="countdown" class="countdown">
-                <div class="count-box"><span id="d">00</span><label>Días</label></div>
-                <div class="count-box"><span id="h">00</span><label>Hrs</label></div>
-                <div class="count-box"><span id="m">00</span><label>Min</label></div>
-                <div class="count-box"><span id="s">00</span><label>Seg</label></div>
+            <div class="countdown-section">
+                <div id="countdown" class="countdown">
+                    <div class="count-box"><span id="d">00</span><label>Días</label></div>
+                    <div class="count-box"><span id="h">00</span><label>Hrs</label></div>
+                    <div class="count-box"><span id="m">00</span><label>Min</label></div>
+                    <div class="count-box"><span id="s">00</span><label>Seg</label></div>
+                </div>
             </div>
         </section>
 
@@ -137,6 +153,12 @@
 
         <!-- AGRADECIMIENTOS -->
         <section class="section text-center pb-12" id="agradecimientos">
+            <div style="font-size:3rem; color:var(--gold); margin-bottom:1rem;">
+                <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+            </div>
             <h2 class="font-medieval text-xl mb-4">Agradecimientos</h2>
             <p class="italic">"Gracias por ser parte de este día tan especial y acompañarme en el inicio de esta nueva
                 etapa."</p>
@@ -168,21 +190,46 @@
         const $ = (s) => document.querySelector(s);
         const $$ = (s) => document.querySelectorAll(s);
 
-        // --- Audio Logic ---
+        // --- Audio Logic & Auto-Scroll ---
         const audio = $('#bgm');
         const audioBar = $('#audioBar');
         const toggleBtn = $('#toggleAudio');
         let isPlaying = false;
+        let scrollInterval;
 
         function updateAudioUI() {
             if (isPlaying) {
                 audioBar.classList.remove('paused');
                 toggleBtn.textContent = "Pause";
+                startAutoScroll();
             } else {
                 audioBar.classList.add('paused');
                 toggleBtn.textContent = "Play";
+                stopAutoScroll();
             }
         }
+
+        // Auto Scroll: gentle scroll down
+        function startAutoScroll() {
+            stopAutoScroll(); // Clear any existing
+            scrollInterval = setInterval(() => {
+                // Check if we reached bottom
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+                    stopAutoScroll();
+                    return;
+                }
+                window.scrollBy({ top: 1, behavior: 'auto' });
+            }, 50); // Speed: 1px every 50ms
+        }
+
+        function stopAutoScroll() {
+            if (scrollInterval) clearInterval(scrollInterval);
+        }
+
+        // Stop auto-scroll on user interaction
+        ['mousedown', 'wheel', 'touchstart', 'keydown'].forEach(evt =>
+            window.addEventListener(evt, stopAutoScroll, { passive: true })
+        );
 
         if (audio && toggleBtn) {
             toggleBtn.addEventListener('click', () => {

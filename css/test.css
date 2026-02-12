@@ -26,11 +26,23 @@
 
 body {
     background-color: var(--pink-pastel);
-    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 70%);
+    /* Parchment texture overlay */
+    background-image:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 80%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     font-family: var(--font-body);
     color: var(--wine-dark);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Text Glows */
+.glow-gold {
+    text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold-light);
+}
+
+.glow-white {
+    text-shadow: 0 0 5px white, 0 0 10px white;
 }
 
 h1,
@@ -38,6 +50,7 @@ h2,
 h3 {
     font-family: var(--font-heading);
     color: var(--wine);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .text-wine {
@@ -614,4 +627,77 @@ h3 {
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.5);
     margin-top: 1rem;
+}
+
+/* --- Countdown Frame --- */
+.countdown-section {
+    position: relative;
+    padding: 3rem;
+    background: radial-gradient(circle, #fff9f0 0%, #fff0f5 100%);
+    border: 8px double var(--gold);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 4px var(--wine),
+        /* Inner wine border */
+        0 10px 30px rgba(0, 0, 0, 0.2);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.countdown-section::before,
+.countdown-section::after {
+    content: "✦";
+    position: absolute;
+    font-size: 2rem;
+    color: var(--gold);
+    top: -1.2rem;
+}
+
+.countdown-section::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.countdown-section::after {
+    bottom: -1.2rem;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* --- Button Sparkle Animation --- */
+@keyframes sparkle {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px var(--gold);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold-light);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px var(--gold);
+    }
+}
+
+#toggleAudio {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    animation: sparkle 2s infinite ease-in-out;
+}
+
+#toggleAudio:hover {
+    animation: none;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--gold);
 }
