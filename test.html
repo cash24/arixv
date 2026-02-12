@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV • Jessica Ariadna</title>
+    <link rel="stylesheet" href="css/test.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro" style="background-image: url('assets/hero.png')">
+            <h2>Mis XV Jessica Ariadna</h2>
+
+        </div>
+        <main>
+            <div class="content" style="background-image: url('assets/hero.png')">
+
+
+                <!-- HERO + SOBRE from index2.html -->
+                <header class="hero" id="inicio">
+                    <div class="hero__bg" aria-hidden="true"></div>
+                    <div class="envelope" id="envelope">
+                        <div class="envelope__body">
+                            <div class="paper" aria-hidden="true"></div>
+
+                            <!-- NUEVAS TAPAS -->
+                            <div class="flap-top" aria-hidden="true"></div>
+                            <div class="flap-bottom" aria-hidden="true"></div>
+
+                            <div class="lip" aria-hidden="true"></div>
+                            <div class="seal" title="Quince Años"></div>
+
+                            <div class="card">
+                                <div class="card__inner">
+                                    <span class="card__badge">Quince Años</span>
+                                    <h1 class="card__title gold-gradient gold-outline">Jessica Ariadna</h1>
+                                    <p class="card__subtitle">Sábado 25 de abril, 2026 · 6:00 PM (Misa) · 7:30 PM
+                                        (Recepción)</p>
+                                    <p id="guestLine" class="card__guest">Invitado especial</p>
+                                    <p style="margin-top:1rem">
+                                        <a href="#detalles" class="btn-outline">Ver detalles →</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- DETALLES -->
+                <section class="section" id="detalles">
+                    <h2>Detalles del evento</h2>
+                    <p class="lead">Acompáñanos a celebrar los XV años de <strong>Jessica Ariadna</strong>. Aquí
+                        tienes la
+                        información de la ceremonia y la recepción.</p>
+
+                    <div class="grid two" style="margin-top:1rem">
+                        <div class="card2">
+                            <span class="chip">Ceremonia</span>
+                            <p class="kv"><strong>Parroquia Santa María</strong></p>
+                            <p class="muted"><strong>6:00 PM</strong> · Av. Hidalgo 123, Coyoacán, CDMX</p>
+                            <p class="center" style="margin-top:.6rem">
+                                <a class="btn-outline" target="_blank" rel="noopener"
+                                    href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123">Abrir
+                                    en Google Maps</a>
+                            </p>
+                        </div>
+                        <div class="card2">
+                            <span class="chip">Recepción</span>
+                            <p class="kv"><strong>Salón Arcadia</strong></p>
+                            <p class="muted"><strong>7:30 PM</strong> · Calz. del Bosque 456, Coyoacán, CDMX</p>
+                            <p class="center" style="margin-top:.6rem">
+                                <a class="btn-outline" target="_blank" rel="noopener"
+                                    href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456">Abrir
+                                    en Google Maps</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid two" style="margin-top:1rem">
+                        <!-- QR de acceso -->
+                        <div class="card2">
+                            <span class="chip">Acceso con QR</span>
+                            <div class="qr-box" style="margin-top:.6rem">
+                                <div id="qrcode" aria-label="Código QR de acceso"></div>
+                                <div id="qrLabel" class="qr-name">Escanea tu QR al ingresar</div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Confirmación -->
+                        <div class="card2 center">
+                            <span class="chip">Confirmación</span>
+                            <p class="lead" id="waText" style="margin:.6rem 0 1rem">
+                                Confirma tu asistencia por WhatsApp (mensaje pre‑llenado).
+                            </p>
+                            <p><a id="waBtn" class="btn" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+                            </p>
+
+                            <div style="margin-top:1rem" class="stat">
+                                <span>Confirmaciones registradas:</span> <b id="confirmCount">0</b>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CUENTA REGRESIVA -->
+                <section class="section" id="cuenta">
+                    <h2>¡Faltan…!</h2>
+                    <div id="countdown" class="countdown">
+                        <div class="count"><b id="d">--</b><span>Días</span></div>
+                        <div class="count"><b id="h">--</b><span>Horas</span></div>
+                        <div class="count"><b id="m">--</b><span>Min</span></div>
+                        <div class="count"><b id="s">--</b><span>Seg</span></div>
+                    </div>
+                </section>
+
+                <!-- GALERÍA (LIGHTBOX) -->
+                <section class="section" id="galeria">
+                    <h2>Sesión de fotos</h2>
+                    <p class="lead">Sube tus fotos a <code>assets/gallery/</code> y aparecerán aquí.</p>
+
+                    <div class="gallery" id="gallery"><!-- vacío mientras no haya imágenes --></div>
+
+                    <!-- Lightbox overlay -->
+                    <div class="lightbox" id="lightbox" aria-hidden="true">
+                        <img id="lbImg" class="lightbox__img" alt="Imagen ampliada">
+                        <button class="lb-btn" id="lbPrev" aria-label="Anterior">‹</button>
+                        <button class="lb-btn" id="lbNext" aria-label="Siguiente">›</button>
+                        <button class="lb-btn" id="lbClose" aria-label="Cerrar">✕</button>
+                    </div>
+                </section>
+
+                <!-- LLUVIA DE SOBRES -->
+                <section class="section" id="regalos">
+                    <h2>Lluvia de sobres</h2>
+                    <p class="note">
+                        Tu presencia es nuestro mejor regalo. Si gustas, sugerimos <strong>lluvia de
+                            sobres</strong>.
+                    </p>
+                </section>
+
+                <!-- RSVP -->
+                <section class="section" id="rsvp">
+                    <h2>Confirma tu asistencia</h2>
+                    <p class="lead">También puedes enviarnos tu confirmación con este formulario.</p>
+                    <div class="card2">
+                        <form id="form-rsvp" class="grid two">
+                            <div>
+                                <label>Nombre completo<br />
+                                    <input name="name" id="nameInput" required
+                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
+                                </label>
+                            </div>
+                            <div>
+                                <label>WhatsApp<br />
+                                    <input name="phone" required
+                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
+                                </label>
+                            </div>
+                            <div>
+                                <label>Asistentes<br />
+                                    <input type="number" min="1" max="8" value="1" name="guests" id="guestsInput"
+                                        required
+                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
+                                </label>
+                            </div>
+                            <div>
+                                <label>Mensaje<br />
+                                    <input name="note" placeholder="Alergias, peticiones, etc."
+                                        style="width:100%;padding:.8rem;border-radius:12px;border:1px solid #ddd">
+                                </label>
+                            </div>
+                            <div class="center" style="grid-column:1/-1">
+                                <button class="btn" type="submit">Enviar confirmación</button>
+                            </div>
+                        </form>
+                        <p id="rsvp-ok" class="center"
+                            style="display:none;margin-top:1rem;color:var(--vino-deep);font-weight:700">
+                            ¡Gracias! Hemos recibido tu confirmación.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- AGRADECIMIENTOS -->
+                <section class="section" id="agradecimientos">
+                    <h2>Agradecimientos</h2>
+                    <p class="lead">
+                        Con profundo cariño agradecemos a nuestra familia y amigos por acompañarnos en este día tan
+                        especial.
+                        Su presencia y buenos deseos hacen inolvidable esta celebración.
+                    </p>
+                    <p class="muted">— Familia Hernández</p>
+                </section>
+
+                <!-- Audio bar + audio local -->
+                <div class="audio-bar paused" id="audioBar" title="Música">
+                    <span class="audio-bar__dot" aria-hidden="true"></span>
+                    <button class="audio-btn" id="toggleAudio" type="button">Play</button>
+                </div>
+                <audio id="bgm" preload="auto" loop src="assets/music.mp3"></audio>
+
+                <script>
+                    const audio = document.getElementById('bgm');
+                    const bar = document.getElementById('audioBar');
+                    const btn = document.getElementById('toggleAudio');
+
+                    function setUI(playing) {
+                        if (!bar || !btn) return;
+                        bar.classList.toggle('paused', !playing);
+                        btn.textContent = playing ? 'Pause' : 'Play';
+                    }
+
+                    if (audio && btn) {
+                        btn.addEventListener('click', async () => {
+                            if (audio.paused) {
+                                try {
+                                    audio.muted = false;
+                                    await audio.play();
+                                    setUI(true);
+                                } catch (err) {
+                                    console.warn('Playback failed:', err);
+                                    setUI(false);
+                                }
+                            } else {
+                                audio.pause();
+                                setUI(false);
+                            }
+                        });
+                    }
+                </script>
+
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
