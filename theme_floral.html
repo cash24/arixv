@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV • Jessica Ariadna</title>
-    <!-- Google Fonts: Cinzel (headers), Cormorant Garamond (body), MedievalSharp (accents) -->
+    <title>XV • Jessica Ariadna (Floral)</title>
+    <!-- Google Fonts: Playfair Display (headers), Source Sans Pro (body) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=MedievalSharp&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/theme_floral.css">
 </head>
 
 <body>
 
     <!-- PORTADA / HERO -->
     <section class="cover" id="start">
-        <div class="cover__bg"></div>
+        <div class="cover__bg"
+            style="background-image: url('https://images.unsplash.com/photo-1490750967868-58cb75069ed6?q=80&w=1920&auto=format&fit=crop');">
+        </div>
         <div class="cover__content">
             <h2 class="animate-fade-up glow-gold">Mis XV</h2>
             <h1 class="animate-fade-up delay-1 glow-white">Jessica Ariadna</h1>
-            <p class="animate-fade-up delay-2 glow-gold">Te invito a vivir este sueño conmigo</p>
+            <p class="animate-fade-up delay-2 glow-gold">Floreciendo a la vida</p>
             <div class="scroll-indicator animate-bounce delay-3">
                 <span>&#8595;</span>
             </div>
@@ -57,23 +59,17 @@
         <!-- DETALLES -->
         <section class="section" id="detalles">
             <h2 class="section-title">Detalles del Evento</h2>
-            <p class="lead">Acompáñanos en esta celebración llena de magia y alegría.</p>
+            <p class="lead">Acompáñanos a celebrar la primavera de mi vida.</p>
 
             <div class="grid two mt-6">
+                <!-- Locations -->
                 <article class="info-card">
                     <span class="chip">Ceremonia</span>
                     <h3>Parroquia Santa María</h3>
                     <p class="time">6:00 PM</p>
                     <p class="address">Av. Hidalgo 123, Coyoacán, CDMX</p>
                     <a href="https://maps.google.com/?q=Parroquia%20Santa%20Mar%C3%ADa%20Av%20Hidalgo%20123"
-                        target="_blank" rel="noopener" class="btn btn--small">
-                        <svg style="width:16px;vertical-align:middle;margin-right:4px" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                        Ver Mapa
-                    </a>
+                        target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
                 </article>
 
                 <article class="info-card">
@@ -82,14 +78,7 @@
                     <p class="time">7:30 PM</p>
                     <p class="address">Calz. del Bosque 456, Coyoacán, CDMX</p>
                     <a href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456"
-                        target="_blank" rel="noopener" class="btn btn--small">
-                        <svg style="width:16px;vertical-align:middle;margin-right:4px" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                        Ver Mapa
-                    </a>
+                        target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
                 </article>
             </div>
 
@@ -97,13 +86,19 @@
             <div class="mt-8">
                 <h2 class="section-title">Galería</h2>
                 <div class="gallery" id="gallery">
-                    <!-- Placeholder images using colors/gradients compatible with theme -->
-                    <div class="thumb" data-src="assets/4931590593436126264.jpg"><img
-                            src="assets/4931590593436126264.jpg" alt="Foto 1" loading="lazy"></div>
-                    <div class="thumb" data-src="assets/4931590593436126265.jpg"><img
-                            src="assets/4931590593436126265.jpg" alt="Foto 2" loading="lazy"></div>
-                    <div class="thumb" data-src="assets/4931590593436126266.jpg"><img
-                            src="assets/4931590593436126266.jpg" alt="Foto 3" loading="lazy"></div>
+                    <!-- Floral/Garden placeholders -->
+                    <div class="thumb"
+                        data-src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1920&fit=crop">
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=300&fit=crop"
+                            loading="lazy"></div>
+                    <div class="thumb"
+                        data-src="https://images.unsplash.com/photo-1563242168-d621ee274092?q=80&w=1920&fit=crop"><img
+                            src="https://images.unsplash.com/photo-1563242168-d621ee274092?q=80&w=300&fit=crop"
+                            loading="lazy"></div>
+                    <div class="thumb"
+                        data-src="https://images.unsplash.com/photo-1596939943482-82c505432095?q=80&w=1920&fit=crop">
+                        <img src="https://images.unsplash.com/photo-1596939943482-82c505432095?q=80&w=300&fit=crop"
+                            loading="lazy"></div>
                 </div>
             </div>
 
@@ -146,26 +141,10 @@
             </div>
         </section>
 
-        <!-- REGALOS -->
-        <section class="section text-center" id="regalos">
-            <h2 class="section-title">Regalos</h2>
-            <div class="gift-box">
-                <p>Tu presencia es mi mejor regalo.</p>
-                <p class="text-sm">Pero si deseas tener un detalle conmigo, habrá lluvia de sobres.</p>
-            </div>
-        </section>
-
         <!-- AGRADECIMIENTOS -->
         <section class="section text-center pb-12" id="agradecimientos">
-            <div style="font-size:3rem; color:var(--gold); margin-bottom:1rem;">
-                <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-            </div>
             <h2 class="font-medieval text-xl mb-4">Agradecimientos</h2>
-            <p class="italic">"Gracias por ser parte de este día tan especial y acompañarme en el inicio de esta nueva
-                etapa."</p>
+            <p class="italic">"Gracias por sembrar amor en mi vida."</p>
             <p class="mt-4 font-bold text-wine">— Familia Hernández</p>
         </section>
 
@@ -173,9 +152,7 @@
 
     <!-- UI COMPONENTS -->
     <div class="audio-control paused" id="audioBar" title="Música">
-        <div class="equalizer">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="equalizer"><span></span><span></span><span></span></div>
         <button id="toggleAudio">Play</button>
     </div>
     <audio id="bgm" loop src="assets/musica.mp3"></audio>
@@ -188,12 +165,8 @@
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-
-        // --- Utils ---
         const $ = (s) => document.querySelector(s);
         const $$ = (s) => document.querySelectorAll(s);
-
-        // --- Audio Logic & Auto-Scroll ---
         const audio = $('#bgm');
         const audioBar = $('#audioBar');
         const toggleBtn = $('#toggleAudio');
@@ -201,84 +174,40 @@
         let scrollInterval;
 
         function updateAudioUI() {
-            if (isPlaying) {
-                audioBar.classList.remove('paused');
-                toggleBtn.textContent = "Pause";
-                startAutoScroll();
-            } else {
-                audioBar.classList.add('paused');
-                toggleBtn.textContent = "Play";
-                stopAutoScroll();
-            }
+            if (isPlaying) { audioBar.classList.remove('paused'); toggleBtn.textContent = "Pause"; startAutoScroll(); }
+            else { audioBar.classList.add('paused'); toggleBtn.textContent = "Play"; stopAutoScroll(); }
         }
-
-        // Auto Scroll: gentle scroll down
         function startAutoScroll() {
-            stopAutoScroll(); // Clear any existing
+            stopAutoScroll();
             scrollInterval = setInterval(() => {
-                // Check if we reached bottom
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
-                    stopAutoScroll();
-                    return;
-                }
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) { stopAutoScroll(); return; }
                 window.scrollBy({ top: 1, behavior: 'auto' });
-            }, 20); // Speed: 1px every 50ms
+            }, 20);
         }
-
-        function stopAutoScroll() {
-            if (scrollInterval) clearInterval(scrollInterval);
-        }
-
-        // Stop auto-scroll on user interaction
-        ['mousedown', 'wheel', 'touchstart', 'keydown'].forEach(evt =>
-            window.addEventListener(evt, stopAutoScroll, { passive: true })
-        );
-
+        function stopAutoScroll() { if (scrollInterval) clearInterval(scrollInterval); }
+        ['mousedown', 'wheel', 'touchstart', 'keydown'].forEach(evt => window.addEventListener(evt, stopAutoScroll, { passive: true }));
         if (audio && toggleBtn) {
             toggleBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play().then(() => { isPlaying = true; updateAudioUI(); })
-                        .catch(e => console.log("Audio play failed", e));
-                } else {
-                    audio.pause();
-                    isPlaying = false;
-                    updateAudioUI();
-                }
+                if (audio.paused) { audio.play().then(() => { isPlaying = true; updateAudioUI(); }); }
+                else { audio.pause(); isPlaying = false; updateAudioUI(); }
             });
         }
 
-        // --- Countdown ---
         const EVENT_DATE = new Date("2026-04-25T19:30:00-06:00").getTime();
         function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = EVENT_DATE - now;
-
-            if (distance < 0) {
-                $('#countdown').innerHTML = "¡Es hoy!";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            $('#d').innerText = days.toString().padStart(2, '0');
-            $('#h').innerText = hours.toString().padStart(2, '0');
-            $('#m').innerText = minutes.toString().padStart(2, '0');
-            $('#s').innerText = seconds.toString().padStart(2, '0');
+            const now = new Date().getTime(); const distance = EVENT_DATE - now;
+            if (distance < 0) { $('#countdown').innerHTML = "¡Es hoy!"; return; }
+            $('#d').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            $('#h').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            $('#m').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            $('#s').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        setInterval(updateCountdown, 1000); updateCountdown();
 
-        // --- Guest / QR Logic ---
         const params = new URLSearchParams(location.search);
         const guestId = params.get('idInvitado');
-
         async function loadGuestInfo() {
-            // Default generic info
             let guest = { nombre: "Invitado Especial", boletos: 1, id: "GENERIC", mesa: "-" };
-
             if (guestId) {
                 try {
                     const res = await fetch('assets/guests.json');
@@ -289,68 +218,30 @@
                     }
                 } catch (e) { console.error(e); }
             }
-
-            // Update UI
             $('#guestLine').textContent = guest.nombre;
-
-            // Show details if valid guest
             if (guest.id !== "GENERIC") {
                 $('#guestTable').textContent = guest.mesa;
                 $('#guestTickets').textContent = guest.boletos;
                 $('#guestDetails').style.display = "block";
             }
-
-            // Generate QR
-            const qrUrl = window.location.origin + window.location.pathname + "?idInvitado=" + guest.id;
-
-            $('#qrcode').innerHTML = ""; // Clean previous
+            $('#qrcode').innerHTML = "";
             new QRCode(document.getElementById("qrcode"), {
-                text: qrUrl,
-                width: 160,
-                height: 160,
-                colorDark: "#54131f", // Wine color
+                text: window.location.origin + window.location.pathname + "?idInvitado=" + guest.id,
+                width: 160, height: 160,
+                colorDark: "#6CAE75", // Sage Green
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
         }
         loadGuestInfo();
 
-        // --- Lightbox ---
-        const lightbox = $('#lightbox');
-        const lbImg = $('#lbImg');
+        const lightbox = $('#lightbox'); const lbImg = $('#lbImg');
+        $$('.thumb').forEach(thumb => { thumb.addEventListener('click', () => { if (thumb.dataset.src) { lbImg.src = thumb.dataset.src; lightbox.classList.add('visible'); } }); });
+        $('#lbClose').addEventListener('click', () => lightbox.classList.remove('visible'));
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('visible'); });
 
-        $$('.thumb').forEach(thumb => {
-            thumb.addEventListener('click', () => {
-                const src = thumb.dataset.src;
-                if (src) {
-                    lbImg.src = src;
-                    lightbox.classList.add('visible');
-                    lightbox.setAttribute('aria-hidden', 'false');
-                }
-            });
-        });
-
-        $('#lbClose').addEventListener('click', () => {
-            lightbox.classList.remove('visible');
-            lightbox.setAttribute('aria-hidden', 'true');
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('visible');
-            }
-        });
-
-        // --- Envelope Animation on Scroll ---
         const envelope = $('#envelope');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                envelope.classList.add('open');
-            } else {
-                envelope.classList.remove('open');
-            }
-        });
-
+        window.addEventListener('scroll', () => { if (window.scrollY > 100) envelope.classList.add('open'); else envelope.classList.remove('open'); });
     </script>
 </body>
 

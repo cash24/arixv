@@ -1,20 +1,24 @@
-/* --- Variables & Reset --- */
+/* --- Variables & Reset (Butterfly Theme) --- */
 :root {
-    --gold: #d4af37;
-    --gold-dim: #c5a028;
-    --gold-light: #f3e5ab;
-    --wine: #722f37;
-    --wine-dark: #501b22;
-    --pink-pastel: #fff0f5;
-    /* Lavender Blush */
-    --crame: #fdf5e6;
-    /* Old Lace */
+    --gold: #9575CD;
+    /* Deep Lavender */
+    --gold-dim: #673AB7;
+    /* Deep Purple */
+    --gold-light: #D1C4E9;
+    /* Light Lavender */
+    --wine: #03A9F4;
+    /* Light Blue */
+    --wine-dark: #0277BD;
+    /* Darker Blue */
+    --pink-pastel: #E1F5FE;
+    /* Very Light Blue Background */
+    --crame: #FFFFFF;
 
-    --font-heading: 'Cinzel', serif;
-    --font-body: 'Cormorant Garamond', serif;
-    --font-accent: 'MedievalSharp', cursive;
+    --font-heading: 'Parisienne', cursive;
+    --font-body: 'Open Sans', sans-serif;
+    --font-accent: 'Parisienne', cursive;
 
-    --shadow-soft: 0 10px 30px rgba(114, 47, 55, 0.15);
+    --shadow-soft: 0 10px 30px rgba(103, 58, 183, 0.15);
     --border-gold: 2px solid var(--gold);
 }
 
@@ -26,17 +30,15 @@
 
 body {
     background-color: var(--pink-pastel);
-    /* Parchment texture overlay */
     background-image:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 80%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239575cd' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
     font-family: var(--font-body);
     color: var(--wine-dark);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Text Glows */
 .glow-gold {
     text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold-light);
 }
@@ -49,8 +51,8 @@ h1,
 h2,
 h3 {
     font-family: var(--font-heading);
-    color: var(--wine);
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    color: var(--gold-dim);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .text-wine {
@@ -69,7 +71,6 @@ h3 {
     font-style: italic;
 }
 
-/* --- Cover / Hero Section --- */
 .cover {
     height: 100vh;
     width: 100%;
@@ -83,10 +84,9 @@ h3 {
 .cover__bg {
     position: absolute;
     inset: 0;
-    background-image: url('../assets/hero.jpg');
-    background-position: center top;
+    background-position: center bottom;
     background-size: cover;
-    filter: brightness(0.6) sepia(0.2);
+    filter: brightness(0.9) hue-rotate(15deg);
     z-index: -1;
     transform: scale(1.1);
     animation: zoomSlow 20s infinite alternate;
@@ -101,9 +101,9 @@ h3 {
 }
 
 .cover__content h2 {
-    font-family: var(--font-accent);
+    font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 4rem);
-    color: var(--gold);
+    color: var(--pink-pastel);
     margin: 0;
 }
 
@@ -112,15 +112,15 @@ h3 {
     color: white;
     margin: 1rem 0;
     line-height: 1;
+    text-shadow: 0 0 20px rgba(103, 58, 183, 0.8);
 }
 
 .cover__content p {
     font-size: 1.2rem;
     font-style: italic;
-    color: #eee;
+    color: #E1F5FE;
 }
 
-/* Animations */
 @keyframes zoomSlow {
     from {
         transform: scale(1.05);
@@ -159,7 +159,7 @@ h3 {
 .scroll-indicator {
     margin-top: 3rem;
     font-size: 2rem;
-    color: var(--gold);
+    color: var(--pink-pastel);
 }
 
 .animate-bounce {
@@ -185,15 +185,9 @@ h3 {
     }
 }
 
-/* --- Main Content --- */
-/* --- Main Content --- */
 .main-content {
     position: relative;
     background-color: var(--pink-pastel);
-    /* Parchment texture overlay - applied here to ensure visibility */
-    background-image:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 80%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     padding-bottom: 4rem;
 }
 
@@ -205,34 +199,30 @@ h3 {
 
 .section-title {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
     position: relative;
     display: inline-block;
     width: 100%;
+    color: var(--gold-dim);
 }
 
 .section-title::after {
-    content: "aaa";
-    /* decorative chars using medieval font or just shapes */
+    content: "🦋";
     display: block;
-    font-family: 'MedievalSharp';
+    font-family: 'Segoe UI Emoji';
     font-size: 1.5rem;
-    color: var(--gold-dim);
+    color: var(--wine);
     margin-top: 0.5rem;
-    letter-spacing: 0.5rem;
 }
 
-/* --- Envelope Section --- */
 .envelope-section {
     height: 80vh;
-    /* space for the envelope to open */
     display: flex;
     justify-content: center;
     padding-top: 2rem;
     perspective: 1000px;
     margin-bottom: -10vh;
-    /* overlap next section slightly */
 }
 
 .envelope {
@@ -249,7 +239,6 @@ h3 {
     height: 100%;
 }
 
-/* Reusing your flap/paper styles adapting colors */
 .paper {
     position: absolute;
     inset: 10px;
@@ -265,7 +254,6 @@ h3 {
     left: 0;
     z-index: 5;
     background: var(--pink-pastel);
-    /* Use themes color */
     border: 2px solid var(--gold-dim);
 }
 
@@ -274,7 +262,7 @@ h3 {
     height: 50%;
     transform-origin: top;
     transition: transform 0.6s ease 0.2s;
-    background: linear-gradient(135deg, #fff0f5 0%, #ecd2dc 100%);
+    background: linear-gradient(135deg, #E1F5FE 0%, #D1C4E9 100%);
     clip-path: polygon(0 0, 100% 0, 50% 100%);
     border-bottom: none;
 }
@@ -282,7 +270,7 @@ h3 {
 .flap-bottom {
     bottom: 0;
     height: 60%;
-    background: linear-gradient(0deg, #fff0f5 0%, #ecd2dc 100%);
+    background: linear-gradient(0deg, #E1F5FE 0%, #D1C4E9 100%);
     clip-path: polygon(0 100%, 100% 100%, 100% 0, 50% 30%, 0 0);
     z-index: 4;
 }
@@ -290,7 +278,7 @@ h3 {
 .seal {
     width: 60px;
     height: 60px;
-    background: var(--gold);
+    background: var(--wine);
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -301,11 +289,10 @@ h3 {
     display: grid;
     place-items: center;
     font-weight: bold;
-    color: var(--wine);
-    border: 2px solid var(--wine);
+    color: white;
+    border: 2px solid white;
 }
 
-/* Card inside Envelope */
 .card {
     position: absolute;
     top: 10px;
@@ -319,10 +306,9 @@ h3 {
     place-items: center;
     text-align: center;
     padding: 1rem;
-    border: 1px solid var(--gold-light);
+    border: 1px dashed var(--gold);
 }
 
-/* Open State */
 .envelope.open .flap-top {
     transform: rotateX(180deg);
     z-index: 0;
@@ -335,16 +321,15 @@ h3 {
 }
 
 .gold-gradient {
-    background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-dim));
+    background: linear-gradient(to right, var(--gold), var(--wine), var(--gold));
     -webkit-background-clip: text;
     color: transparent;
 }
 
-/* --- Cards (Info) --- */
 .info-card {
     background: white;
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 20px;
     border: 1px solid var(--gold-light);
     text-align: center;
     box-shadow: var(--shadow-soft);
@@ -359,12 +344,12 @@ h3 {
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--gold);
+    background: linear-gradient(to right, var(--wine), var(--gold));
 }
 
 .chip {
     display: inline-block;
-    background: var(--wine);
+    background: var(--gold-dim);
     color: white;
     padding: 0.2rem 1rem;
     border-radius: 20px;
@@ -377,7 +362,7 @@ h3 {
 .time {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--gold-dim);
+    color: var(--wine-dark);
     margin: 0.5rem 0;
 }
 
@@ -386,7 +371,6 @@ h3 {
     margin-bottom: 1.5rem;
 }
 
-/* --- Grid & Utils --- */
 .grid {
     display: grid;
     gap: 2rem;
@@ -402,7 +386,6 @@ h3 {
     }
 }
 
-/* --- QR Code Container --- */
 .qr-container {
     text-align: center;
     margin-top: 1rem;
@@ -415,7 +398,7 @@ h3 {
     background: white;
     padding: 10px;
     border: 1px solid var(--gold-light);
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 #qrcode svg {
@@ -447,39 +430,39 @@ h3 {
     padding-bottom: 3rem;
 }
 
-/* --- Buttons --- */
 .btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 30px;
     transition: all 0.3s;
     font-weight: 600;
     cursor: pointer;
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .btn--outline {
-    border: 1px solid var(--wine);
-    color: var(--wine);
+    border: 2px solid var(--gold-dim);
+    color: var(--gold-dim);
 }
 
 .btn--outline:hover {
-    background: var(--wine);
+    background: var(--gold-dim);
     color: white;
 }
 
 .btn--small {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
-    border: 1px solid var(--gold);
-    color: var(--gold-dim);
+    border: 1px solid var(--wine);
+    color: var(--wine-dark);
 }
 
 .btn--small:hover {
-    background: var(--gold-light);
+    background: var(--wine);
+    color: white;
 }
 
 .btn--whatsapp {
@@ -494,7 +477,6 @@ h3 {
     box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
 }
 
-/* --- Countdown --- */
 .countdown {
     display: flex;
     justify-content: center;
@@ -512,17 +494,16 @@ h3 {
 .count-box span {
     font-size: 2.5rem;
     font-family: var(--font-heading);
-    color: var(--wine);
+    color: var(--gold-dim);
     line-height: 1;
 }
 
 .count-box label {
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--wine-dark);
 }
 
-/* --- Gallery --- */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -532,8 +513,8 @@ h3 {
 .thumb {
     aspect-ratio: 1;
     overflow: hidden;
-    border-radius: 4px;
-    border: 1px solid var(--gold);
+    border-radius: 12px;
+    border: 2px solid var(--pink-pastel);
     cursor: pointer;
     position: relative;
 }
@@ -549,11 +530,10 @@ h3 {
     transform: scale(1.1);
 }
 
-/* --- Lightbox --- */
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     z-index: 1000;
     display: none;
     align-items: center;
@@ -568,7 +548,7 @@ h3 {
 .lightbox img {
     max-width: 90%;
     max-height: 90%;
-    border: 2px solid var(--gold);
+    border: 4px solid var(--gold);
 }
 
 .lb-close {
@@ -577,12 +557,11 @@ h3 {
     right: 20px;
     background: none;
     border: none;
-    color: white;
+    color: var(--gold-dim);
     font-size: 3rem;
     cursor: pointer;
 }
 
-/* --- Audio Bar --- */
 .audio-control {
     position: fixed;
     bottom: 20px;
@@ -593,7 +572,7 @@ h3 {
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     z-index: 900;
     border: 1px solid var(--gold);
 }
@@ -607,7 +586,7 @@ h3 {
 
 .equalizer span {
     width: 3px;
-    background: var(--wine);
+    background: var(--gold);
     animation: eq 0.6s infinite ease-in-out alternate;
 }
 
@@ -637,16 +616,24 @@ h3 {
 }
 
 #toggleAudio {
-    background: none;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
     border: none;
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--wine);
+    color: white;
     cursor: pointer;
     font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    animation: sparkle 2s infinite ease-in-out;
 }
 
-/* --- Gift Box --- */
+#toggleAudio:hover {
+    animation: none;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--gold);
+}
+
 .gift-box {
     border: 2px dashed var(--gold);
     padding: 2rem;
@@ -655,28 +642,28 @@ h3 {
     margin-top: 1rem;
 }
 
-/* --- Countdown Frame --- */
 .countdown-section {
     position: relative;
     padding: 3rem;
-    background: radial-gradient(circle, #fff9f0 0%, #fff0f5 100%);
+    background: radial-gradient(circle, #fff 0%, #E1F5FE 100%);
     border: 8px double var(--gold);
-    border-radius: 20px;
-    box-shadow:
-        0 0 0 4px var(--wine),
-        /* Inner wine border */
-        0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--pink-pastel), 0 10px 30px rgba(0, 0, 0, 0.1);
     margin: 2rem auto;
-    max-width: 800px;
+    max-width: 600px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .countdown-section::before,
 .countdown-section::after {
-    content: "✦";
+    content: "🦋";
     position: absolute;
     font-size: 2rem;
     color: var(--gold);
-    top: -1.2rem;
+    top: 1rem;
 }
 
 .countdown-section::before {
@@ -685,13 +672,12 @@ h3 {
 }
 
 .countdown-section::after {
-    bottom: -1.2rem;
+    bottom: 1rem;
     top: auto;
     left: 50%;
     transform: translateX(-50%);
 }
 
-/* --- Button Sparkle Animation --- */
 @keyframes sparkle {
     0% {
         transform: scale(1);
@@ -707,23 +693,4 @@ h3 {
         transform: scale(1);
         box-shadow: 0 0 5px var(--gold);
     }
-}
-
-#toggleAudio {
-    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-    border: none;
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    animation: sparkle 2s infinite ease-in-out;
-}
-
-#toggleAudio:hover {
-    animation: none;
-    transform: scale(1.1);
-    box-shadow: 0 0 15px var(--gold);
 }
