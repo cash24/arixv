@@ -74,7 +74,11 @@ body::after {
     position: fixed;
     inset: 10px;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 2000;
+    /* Move to very top so they don't cover content backgrounds but allow content beneath */
+    /* Wait, if they are fixed and have z-index 2000, they are on top. 
+       Usually the issue is content being BEHIND a background. 
+       Let's put the frame at 2000 but it only has borders. */
 }
 
 body::before {
@@ -143,6 +147,9 @@ h3 {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: var(--bg-navy);
+    /* Fallback */
+    z-index: 5;
 }
 
 .cover__bg {
@@ -151,9 +158,11 @@ h3 {
     background-position: center;
     background-size: cover;
     filter: brightness(0.7);
-    z-index: -1;
+    z-index: 1;
+    /* In front of body background */
     transform: scale(1.1);
-    animation: zoomSlow 20s infinite alternate;
+    /* SLOW DOWN ANIMATION TO SAVE CPU */
+    animation: zoomSlow 30s infinite alternate linear;
 }
 
 .cover__content {
@@ -249,6 +258,8 @@ h3 {
     position: relative;
     background-color: var(--bg-navy);
     padding-bottom: 4rem;
+    z-index: 10;
+    /* Above cover background */
 }
 
 .section {
@@ -480,20 +491,22 @@ h3 {
 
 /* COUNTDOWN */
 .countdown-section {
-    background: rgba(0, 0, 51, 0.4);
+    background: rgba(0, 0, 51, 0.6);
     border: 5px double var(--gold);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 20px;
     max-width: 900px;
     margin: 3rem auto;
     position: relative;
-    box-shadow: 0 0 30px rgba(218, 165, 32, 0.2);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(218, 165, 32, 0.4);
     display: flex;
+    flex-direction: row;
+    /* Force horizontal */
     align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: center;
+    gap: 3rem;
+    overflow: visible;
+    /* Ensure nothing is cut */
 }
 
 .countdown-section::before {
@@ -544,19 +557,23 @@ h3 {
 }
 
 .countdown-rose {
-    width: 300px;
-    height: 450px;
+    width: 280px;
+    height: 400px;
     position: relative;
-    overflow: hidden;
-    border-radius: 150px 150px 20px 20px;
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.1);
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 140px 140px 20px 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
 }
 
 .countdown-rose img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(1.2) contrast(1.1);
+    display: block;
+    /* Force display */
+    border-radius: inherit;
+    filter: brightness(1.2);
     animation: rosePulse 4s infinite alternate;
 }
 
