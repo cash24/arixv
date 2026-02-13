@@ -48,9 +48,11 @@ body {
         radial-gradient(2px 2px at 15% 85%, #fff, transparent),
         radial-gradient(1px 1px at 45% 95%, #fff, transparent);
     background-size: 200px 200px;
-    animation: twinkStars 10s infinite;
+    animation: twinkStars 15s infinite linear;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
+    /* Behind everything */
+    opacity: 0.5;
 }
 
 @keyframes twinkStars {
@@ -61,7 +63,7 @@ body {
     }
 
     50% {
-        opacity: 0.7;
+        opacity: 0.8;
     }
 }
 
@@ -504,6 +506,12 @@ h3 {
     pointer-events: none;
 }
 
+/* Ensure Rose is visible and layout is horizontal */
+.countdown-section {
+    position: relative;
+    z-index: 10;
+}
+
 .countdown-content {
     display: flex;
     flex-direction: column;
@@ -563,18 +571,44 @@ h3 {
 }
 
 @media(max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
     .countdown-section {
+        flex-direction: column-reverse;
+        /* Rose on top or bottom? User said horizontal reference had rose on right, so col-reverse puts it on top on mobile usually if HTML order is Content then Rose. Wait, if I want it to stack naturally, flex-direction: column. */
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem;
     }
 
     .countdown-content {
         padding-left: 0;
         align-items: center;
+        gap: 1rem;
     }
 
     .count-box span {
-        font-size: 4rem;
+        font-size: 3.5rem;
+    }
+
+    .countdown-rose {
+        width: 100%;
+        max-width: 250px;
+        height: 350px;
+        margin: 0 auto;
+    }
+
+    /* Performance optimization */
+    .ornament-stars {
+        display: none;
+    }
+
+    .main-content,
+    .info-card,
+    .countdown-section {
+        backdrop-filter: none !important;
     }
 }
 

@@ -138,7 +138,7 @@
                 </div>
                 <div class="countdown-rose">
                     <img src="https://images.unsplash.com/photo-1548092372-0d1bd008acbc?auto=format&fit=crop&q=80&w=600"
-                        alt="Rosa Eterna">
+                        alt="Rosa Eterna" loading="eager" crossorigin="anonymous">
                 </div>
             </div>
         </section>
@@ -173,21 +173,23 @@
         const audioBar = $('#audioBar');
         const toggleBtn = $('#toggleAudio');
         let isPlaying = false;
-        let scrollInterval;
-
+        let scrollFrame;
         function updateAudioUI() {
             if (isPlaying) { audioBar.classList.remove('paused'); toggleBtn.textContent = "Pause"; startAutoScroll(); }
             else { audioBar.classList.add('paused'); toggleBtn.textContent = "Play"; stopAutoScroll(); }
         }
         function startAutoScroll() {
             stopAutoScroll();
-            scrollInterval = setInterval(() => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) { stopAutoScroll(); return; }
-                window.scrollBy({ top: 1, behavior: 'auto' });
-            }, 20);
+            const scroll = () => {
+                if (!isPlaying) return;
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) { stopAutoScroll(); return; }
+                window.scrollBy(0, 0.5); // Slower, smoother scroll
+                scrollFrame = requestAnimationFrame(scroll);
+            };
+            scrollFrame = requestAnimationFrame(scroll);
         }
-        function stopAutoScroll() { if (scrollInterval) clearInterval(scrollInterval); }
-        ['mousedown', 'wheel', 'touchstart', 'keydown'].forEach(evt => window.addEventListener(evt, stopAutoScroll, { passive: true }));
+        function stopAutoScroll() { if (scrollFrame) cancelAnimationFrame(scrollFrame); }
+        ['mousedown', 'wheel', 'touchstart', 'keydown'].forEach(evt => window.addEventListener(evt, () => { isPlaying = false; updateAudioUI(); }, { passive: true }));
         if (audio && toggleBtn) {
             audioBar.addEventListener('click', () => {
                 if (audio.paused) { audio.play().then(() => { isPlaying = true; updateAudioUI(); }); }
