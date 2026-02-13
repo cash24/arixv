@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV • Jessica Ariadna (Floral)</title>
-    <!-- Google Fonts: Playfair Display (headers), Source Sans Pro (body) -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap"
+    <title>XV • Jessica Ariadna (Bella)</title>
+    <!-- Google Fonts: Great Vibes (headers), Montserrat (body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/theme_floral.css">
+    <link rel="stylesheet" href="css/theme_belle.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
 </head>
 
 <body>
-    <div class="ornament-petals"></div>
+    <div class="ornament-stars"></div>
+    <div class="ornament-chandelier"></div>
 
     <!-- PORTADA / HERO -->
     <section class="cover" id="start">
         <div class="cover__bg"
-            style="background-image: url('https://images.unsplash.com/photo-1490750967868-58cb75069ed6?q=80&w=1920&auto=format&fit=crop');">
+            style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Palacio_de_Versalles_Galer%C3%ADa_de_los_Espejos.jpg/1920px-Palacio_de_Versalles_Galer%C3%ADa_de_los_Espejos.jpg');">
         </div>
         <div class="cover__content">
             <h2 class="animate-fade-up glow-gold">Mis XV</h2>
             <h1 class="animate-fade-up delay-1 glow-white">Jessica Ariadna</h1>
-            <p class="animate-fade-up delay-2 glow-gold">Floreciendo a la vida</p>
+            <p class="animate-fade-up delay-2 glow-gold">Un cuento de hadas convertido en realidad</p>
             <div class="scroll-indicator animate-bounce delay-3">
                 <span>&#8595;</span>
             </div>
@@ -60,10 +62,9 @@
         <!-- DETALLES -->
         <section class="section" id="detalles">
             <h2 class="section-title">Detalles del Evento</h2>
-            <p class="lead">Acompáñanos a celebrar la primavera de mi vida.</p>
+            <p class="text-center italic">"Cierto como el sol, que nace en el este..."</p>
 
             <div class="grid two mt-6">
-                <!-- Locations -->
                 <article class="info-card">
                     <span class="chip">Ceremonia</span>
                     <h3>Parroquia Santa María</h3>
@@ -75,32 +76,26 @@
 
                 <article class="info-card">
                     <span class="chip">Recepción</span>
-                    <h3>Salón Arcadia</h3>
+                    <h3>Salón Gran Gala</h3>
                     <p class="time">7:30 PM</p>
-                    <p class="address">Calz. del Bosque 456, Coyoacán, CDMX</p>
-                    <a href="https://maps.google.com/?q=Sal%C3%B3n%20Arcadia%20Calzada%20del%20Bosque%20456"
+                    <p class="address">Calz. del Rey 789, Coyoacán, CDMX</p>
+                    <a href="https://maps.google.com/?q=Sal%C3%B3n%20Gran%20Gala%20Calzada%20del%20Rey%20789"
                         target="_blank" rel="noopener" class="btn btn--small">Ver Mapa</a>
                 </article>
             </div>
 
             <!-- GALERÍA -->
             <div class="mt-8">
-                <h2 class="section-title">Galería</h2>
+                <h2 class="section-title">Nuestra Historia</h2>
                 <div class="gallery" id="gallery">
-                    <!-- Floral/Garden placeholders -->
-                    <div class="thumb"
-                        data-src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1920&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=300&fit=crop"
-                            loading="lazy">
+                    <div class="thumb" data-src="https://picsum.photos/id/201/1920/1080">
+                        <img src="https://picsum.photos/id/201/300/300" loading="lazy">
                     </div>
-                    <div class="thumb"
-                        data-src="https://images.unsplash.com/photo-1563242168-d621ee274092?q=80&w=1920&fit=crop"><img
-                            src="https://images.unsplash.com/photo-1563242168-d621ee274092?q=80&w=300&fit=crop"
-                            loading="lazy"></div>
-                    <div class="thumb"
-                        data-src="https://images.unsplash.com/photo-1596939943482-82c505432095?q=80&w=1920&fit=crop">
-                        <img src="https://images.unsplash.com/photo-1596939943482-82c505432095?q=80&w=300&fit=crop"
-                            loading="lazy">
+                    <div class="thumb" data-src="https://picsum.photos/id/202/1920/1080">
+                        <img src="https://picsum.photos/id/202/300/300" loading="lazy">
+                    </div>
+                    <div class="thumb" data-src="https://picsum.photos/id/203/1920/1080">
+                        <img src="https://picsum.photos/id/203/300/300" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -111,7 +106,7 @@
                     <span class="chip">Acceso</span>
                     <div class="qr-container">
                         <div id="qrcode"></div>
-                        <p id="qrLabel" class="text-sm mt-2">Tu código de acceso</p>
+                        <p id="qrLabel" class="text-sm mt-2">Tu código Real</p>
                         <div id="guestDetails" style="margin-top:1rem; display:none;">
                             <p><strong>Mesa:</strong> <span id="guestTable">-</span></p>
                             <p><strong>Boletos:</strong> <span id="guestTickets">-</span></p>
@@ -121,10 +116,10 @@
 
                 <div class="info-card center-content">
                     <span class="chip">Confirmación</span>
-                    <p class="mb-4">Confirma tu asistencia fácilmente por WhatsApp.</p>
-                    <a id="waBtn" class="btn btn--whatsapp" target="_blank" rel="noopener">Confirmar</a>
+                    <p class="mb-4">Confirma tu asistencia antes de que caiga el último pétalo.</p>
+                    <a id="waBtn" class="btn btn--whatsapp" target="_blank" rel="noopener">Confirmar vía WhatsApp</a>
                     <div class="stat mt-4">
-                        <span>Asistentes confirmados:</span>
+                        <span>Invitados confirmados:</span>
                         <strong id="confirmCount">0</strong>
                     </div>
                 </div>
@@ -135,11 +130,15 @@
         <section class="section text-center" id="cuenta">
             <h2 class="section-title">Faltan</h2>
             <div class="countdown-section">
-                <div id="countdown" class="countdown">
+                <div id="countdown" class="countdown-content">
                     <div class="count-box"><span id="d">00</span><label>Días</label></div>
                     <div class="count-box"><span id="h">00</span><label>Hrs</label></div>
                     <div class="count-box"><span id="m">00</span><label>Min</label></div>
                     <div class="count-box"><span id="s">00</span><label>Seg</label></div>
+                </div>
+                <div class="countdown-rose">
+                    <img src="https://images.unsplash.com/photo-1548092372-0d1bd008acbc?auto=format&fit=crop&q=80&w=600"
+                        alt="Rosa Eterna">
                 </div>
             </div>
         </section>
@@ -147,8 +146,8 @@
         <!-- AGRADECIMIENTOS -->
         <section class="section text-center pb-12" id="agradecimientos">
             <h2 class="font-medieval text-xl mb-4">Agradecimientos</h2>
-            <p class="italic">"Gracias por sembrar amor en mi vida."</p>
-            <p class="mt-4 font-bold text-wine">— Familia Hernández</p>
+            <p class="italic">"Gracias por ser parte de nuestra historia."</p>
+            <p class="mt-4 font-bold">— Familia Hernández</p>
         </section>
 
     </main>
@@ -190,7 +189,7 @@
         function stopAutoScroll() { if (scrollInterval) clearInterval(scrollInterval); }
         ['mousedown', 'wheel', 'touchstart', 'keydown'].forEach(evt => window.addEventListener(evt, stopAutoScroll, { passive: true }));
         if (audio && toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
+            audioBar.addEventListener('click', () => {
                 if (audio.paused) { audio.play().then(() => { isPlaying = true; updateAudioUI(); }); }
                 else { audio.pause(); isPlaying = false; updateAudioUI(); }
             });
@@ -231,7 +230,7 @@
             new QRCode(document.getElementById("qrcode"), {
                 text: window.location.origin + window.location.pathname + "?idInvitado=" + guest.id,
                 width: 160, height: 160,
-                colorDark: "#6CAE75", // Sage Green
+                colorDark: "#B8860B", // Dark Goldenrod
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });

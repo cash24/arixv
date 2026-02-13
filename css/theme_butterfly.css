@@ -37,6 +37,63 @@ body {
     color: var(--wine-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+/* DECORATIVE FRAME - BUTTERFLY WINGS */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 15px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+body::before {
+    border: 2px solid var(--wine);
+    border-radius: 50% 20% 50% 20%;
+}
+
+body::after {
+    border: 20px solid transparent;
+    border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ctext y='1em' font-size='20'%3E🦋%3C/text%3E%3Ctext x='80' y='1em' font-size='20'%3E🦋%3C/text%3E%3Ctext y='100' font-size='20'%3E🦋%3C/text%3E%3Ctext x='80' y='100' font-size='20'%3E🦋%3C/text%3E%3C/svg%3E") 20 stretch;
+}
+
+.ornament-butterflies {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.ornament-butterflies::before,
+.ornament-butterflies::after {
+    content: "🦋";
+    position: absolute;
+    font-size: 1.5rem;
+    animation: flyBy 12s infinite ease-in-out;
+    opacity: 0.4;
+}
+
+.ornament-butterflies::after {
+    left: 80%;
+    animation-delay: -6s;
+}
+
+@keyframes flyBy {
+    0% {
+        transform: translate(-50px, 100vh) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(100vw, 50vh) rotate(180deg);
+    }
+
+    100% {
+        transform: translate(-50px, -100px) rotate(360deg);
+    }
 }
 
 .glow-gold {
@@ -323,6 +380,7 @@ h3 {
 .gold-gradient {
     background: linear-gradient(to right, var(--gold), var(--wine), var(--gold));
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -504,30 +562,57 @@ h3 {
     color: var(--wine-dark);
 }
 
+/* GALLERY - POLAROID */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    padding: 1rem;
 }
 
 .thumb {
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 12px;
-    border: 2px solid var(--pink-pastel);
+    background: white;
+    padding: 10px 10px 40px 10px;
+    border: 1px solid #e1f5fe;
+    box-shadow: 0 8px 15px rgba(3, 169, 244, 0.1);
+    transition: all 0.4s;
     cursor: pointer;
     position: relative;
+    transform: rotate(calc(var(--r, 0) * 1deg));
+}
+
+.thumb:nth-child(odd) {
+    --r: -2.5;
+}
+
+.thumb:nth-child(even) {
+    --r: 2.5;
+}
+
+.thumb::after {
+    content: "🦋";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    opacity: 0.6;
 }
 
 .thumb img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 1;
     object-fit: cover;
-    transition: transform 0.5s;
+    display: block;
+    border-radius: 0;
 }
 
-.thumb:hover img {
-    transform: scale(1.1);
+.thumb:hover {
+    transform: rotate(0) scale(1.1) translateY(-10px);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(3, 169, 244, 0.2);
+    border-color: var(--wine);
 }
 
 .lightbox {
